@@ -4,4 +4,4 @@ This is local sounds, bringing the local artists and sounds to you.
 Are you listening?
 The kid smashing drums in her parents garage.
 The old man up the street stroking a guitar lightly on his poarch. 
-You next door neighbor belting a ballet in the shower. 
+Your next door neighbor belting a ballet in the shower. 
