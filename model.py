@@ -15,7 +15,7 @@ class User(db.Model):
                         autoincrement = True)
     u_name = db.Column(db.String(30), unique = True)
     u_password = db.Column(db.String(30))
-    location = db.Column(db.Integer, db.ForeignKey('locations.location_id'))
+    location_id = db.Column(db.Integer, db.ForeignKey('locations.location_id'))
 
     def __repr__(self):
         return f"User {self.u_name} has been created! Their primary location in {self.location_id}"
@@ -32,14 +32,14 @@ class Artist(db.Model):
                         autoincrement = True)
     artist_name = db.Column(db.String)
     artist_URI = db.Column(db.String, unique = True) 
-    location = db.Column(db.Integer, db.ForeignKey('locations.location_id'))
+    location_id = db.Column(db.Integer, db.ForeignKey('locations.location_id'))
 
     def __repr__(self):
         return f"{self.artist_name} is rockin! You can find them in {self.location_id}"
 
 
 
-class Locations(db.Model):
+class Location(db.Model):
     """ Location is everything and nothing in the digital age"""
 
     __tablename__ = "locations"
@@ -51,8 +51,8 @@ class Locations(db.Model):
     city = db.Column(db.String)
     zipcode = db.Column(db.Integer)
 
-    artist = db.relationship('Artist', backref='locations')
-    user = db.relationship('User', backref='locations')
+    artists = db.relationship('Artist', backref='location')
+    users = db.relationship('User', backref='location')
 
 
     def __repr__(self):
@@ -85,6 +85,6 @@ if __name__ == "__main__":
     db.session.add(test_artist)
     db.session.commit()
 
-    test_location = Locations(state = 'California', city = 'San Francisco', zipcode = 94703)
+    test_location = Location(state = 'California', city = 'San Francisco', zipcode = 94703)
     db.session.add(test_location)
     db.session.commit()

@@ -2,28 +2,37 @@
 
 import model 
 
+# Do this in a SEED.PY file ???
 # def populate_locations():
 #     """ Something that will take the csv read it and populae my db """
-# Do this in a SEED.PY file ???
 
-def make_new_user(name, password):
+# Add to Queue ask about location_id to user and artist when creating an new user/artist
+# Query db for locations
+
+def make_new_user(name, password, city):
     """ Adds a new user to the user table"""
 
-    new_user = User(u_name = name, u_password = password)
+    new_user = User(u_name = name, u_password = password, location = city)
+    db.session.add(new_user)
+    db.session.commit()
     return new_user
 
 
-def make_new_artist(stagename, bandcamplink):
+def make_new_artist(artist_name, artist_URI, city):
     """ Adds a new artist to the artist table"""
 
-    new_artist = Artist(stagename = artist_name, bandcamplink = artist_URI)
+    new_artist = Artist(artist_name = artist_name, artist_URI = artist_URI, location = city)
+    db.session.add(new_artist)
+    db.session.commit()
     return new_artist
 
 
 def make_new_location(state, city, zipcode):
     """ Adds a new location to the DB"""
 
-    new_location = Locations(state = state, city = city, zipcode = zipcode)
+    new_location = Location(state = state, city = city, zipcode = zipcode)
+    db.session.add(new_location)
+    db.session.commit()
     return new_location 
 
     # test_user = User(u_name = 'Tesy', u_password = 'Besty')
