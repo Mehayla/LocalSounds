@@ -15,13 +15,11 @@ class User(db.Model):
                         autoincrement = True)
     u_name = db.Column(db.String(30), unique = True)
     u_password = db.Column(db.String(30))
-    location_id = db.Column(db.Integer, db.ForeignKey('Locations.location_id'))
-
-    location = db.relationship("Locations", backref = "users")
-
+    location = db.Column(db.Integer, db.ForeignKey('locations.location_id'))
 
     def __repr__(self):
         return f"User {self.u_name} has been created! Their primary location in {self.location_id}"
+
 
 
 class Artist(db.Model):
@@ -33,13 +31,12 @@ class Artist(db.Model):
                         primary_key = True,
                         autoincrement = True)
     artist_name = db.Column(db.String)
-    artist_URI = db.Column(db.String, unique = True) #Is URL even a column input type? Double chek this
-    location_id = db.Column(db.Integer, db.ForeignKey('Locations.location_id'))
-
-    location = db.relationship("Locations", backref = "artist")
+    artist_URI = db.Column(db.String, unique = True) 
+    location = db.Column(db.Integer, db.ForeignKey('locations.location_id'))
 
     def __repr__(self):
         return f"{self.artist_name} is rockin! You can find them in {self.location_id}"
+
 
 
 class Locations(db.Model):
@@ -54,11 +51,15 @@ class Locations(db.Model):
     city = db.Column(db.String)
     zipcode = db.Column(db.Integer)
 
+    artist = db.relationship('Artist', backref='locations')
+    user = db.relationship('User', backref='locations')
+
+
     def __repr__(self):
         return f"Location {self.city}, {self.state} has been created."
 
 
-def connect_to_db(flask_app, db_uri = 'localsound', echo = True):
+def connect_to_db(flask_app, db_uri="postgresql:///localsound", echo = True):
     flask_app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
     flask_app.config["SQLALCHEMY_ECHO"] = echo
     flask_app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -72,6 +73,9 @@ def connect_to_db(flask_app, db_uri = 'localsound', echo = True):
 if __name__ == "__main__":
     from server import app
     connect_to_db(app)
+
+    db.drop_all()
+    db.create_all()
 
     test_user = User(u_name = 'Tesy', u_password = 'Besty')
     db.session.add(test_user)
