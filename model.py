@@ -58,29 +58,29 @@ class Locations(db.Model):
         return f"Location {self.city}, {self.state} has been created."
 
 
-# def connect_to_db(flask_app, db_uri = '????', echo = True):
-#     flask_app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
-#     flask_app.config["SQLALCHEMY_ECHO"] = echo
-#     flask_app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+def connect_to_db(flask_app, db_uri = 'localsound', echo = True):
+    flask_app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
+    flask_app.config["SQLALCHEMY_ECHO"] = echo
+    flask_app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-#     db.app = flask_app
-#     db.init_app(flask_app)
+    db.app = flask_app
+    db.init_app(flask_app)
 
-#     print("Connected to the Data Base")
+    print("Connected to the Data Base")
 
 
-# if __name__ == "__main__":
-#     from server import app
-#     connect_to_db(app)
+if __name__ == "__main__":
+    from server import app
+    connect_to_db(app)
 
-#     test_user = User(u_name = 'Tesy', u_password = 'Besty')
-#     db.session.add(test_user)
-#     db.session.commit()
+    test_user = User(u_name = 'Tesy', u_password = 'Besty')
+    db.session.add(test_user)
+    db.session.commit()
 
-#     test_artist = Artist(artist_name = 'Potato', artist_URI = 'http://TheSkinsss.com' )
-#     db.session.add(test_artist)
-#     db.session.commit()
+    test_artist = Artist(artist_name = 'Potato', artist_URI = 'http://TheSkinsss.com' )
+    db.session.add(test_artist)
+    db.session.commit()
 
-#     test_location = Locations(state = 'California', city = 'San Francisco', zipcode = 94703)
-#     db.session.add(test_location)
-#     db.session.commit()
+    test_location = Locations(state = 'California', city = 'San Francisco', zipcode = 94703)
+    db.session.add(test_location)
+    db.session.commit()
