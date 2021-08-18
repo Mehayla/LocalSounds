@@ -77,8 +77,12 @@ if __name__ == "__main__":
     db.drop_all()
     db.create_all()
 
-    test_user = User(u_name = 'Tesy', u_password = 'Besty')
+    test_user = User(u_name = 'Tesy' , u_password = 'Besty')
     db.session.add(test_user)
+    db.session.commit()
+
+    test_user2 = User(u_name = 'Patty' , u_password = 'Smith')
+    db.session.add(test_user2)
     db.session.commit()
 
     test_artist = Artist(artist_name = 'Potato', artist_URI = 'http://TheSkinsss.com' )
