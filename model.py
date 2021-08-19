@@ -18,7 +18,7 @@ class User(db.Model):
     location_id = db.Column(db.Integer, db.ForeignKey('locations.location_id'))
 
     def __repr__(self):
-        return f"User {self.u_name} has been created! Their primary location in {self.location_id}"
+        return f"User {self.u_name} has a primary location in {self.location_id}"
 
 
 
@@ -47,9 +47,8 @@ class Location(db.Model):
     location_id = db.Column(db.Integer, 
                         primary_key = True,
                         autoincrement = True)
-    state = db.Column(db.String)
     city = db.Column(db.String)
-    zipcode = db.Column(db.Integer)
+    state = db.Column(db.String)
 
     artists = db.relationship('Artist', backref='location')
     users = db.relationship('User', backref='location')
@@ -89,6 +88,6 @@ if __name__ == "__main__":
     db.session.add(test_artist)
     db.session.commit()
 
-    test_location = Location(state = 'California', city = 'San Francisco', zipcode = 94703)
+    test_location = Location(state = 'California', city = 'San Francisco')
     db.session.add(test_location)
     db.session.commit()
