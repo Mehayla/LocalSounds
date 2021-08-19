@@ -2,10 +2,6 @@
 
 import model 
 
-# Do this in a SEED.PY file ???
-# def populate_locations():
-#     """ Something that will take the csv read it and populae my db """
-
 # Add to Queue ask about location_id to user and artist when creating an new user/artist
 # Query db for locations
 
@@ -13,13 +9,13 @@ def make_new_user(name, password, city):
     """ Adds a new user to the user table"""
 
     current_users = db.session.query(User.u_name).all()
-    locations = db.session.query(Location.zipcode) ### What is best? City? ZipCode? ###
+    locations = db.session.query(Location.city) ### What is best? City? ZipCode? ###
     
-    if current_users.filter(User.u_name == name): #This returns a boolean T/F
-        return f"{name} already exists please sign in." # Should this redirect?
-    else:
-        new_user = User(u_name = name, u_password = password, location = city)
-        if 
+    # if current_users.filter(User.u_name == name): #This returns a boolean T/F
+    #     return f"{name} already exists please sign in." # Should this redirect?
+    # else:
+    #     if locations.query.filter(Location.in_(city)):  #Checks to see if the city is already in db
+
         db.session.add(new_user)
         db.session.commit()
         return new_user
@@ -50,6 +46,9 @@ def make_new_location(state, city, zipcode):
     db.session.add(new_location)
     db.session.commit()
     return new_location 
+
+# def get_artist():
+#     """ Gets all artists in a particular location """
 
 
 if __name__ == "__main__":
