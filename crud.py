@@ -10,45 +10,41 @@ from model import db, User, Artist, Location, connect_to_db
 # edit creat_user to check if a location exist then add it under the location id as a Forigne key
 # Call these functions in SEED
 
+# Look up what one or none does
+
 
 def create_user(name, password, city, state):
     """ Adds a new user to the user table"""
 
-    # user = User.query.filter(User.u_name == name).one_or_none()
+    user = User.query.filter(User.u_name == name).one_or_none() #us.one_or_none() - returns an error when nothing 
+    location = User.query.filter(Location.city == city, state == state).one_or_none()
 
-    if User.query.filter(User.u_name == name): #This returns a boolean T/F #us.one() - returns an error when nothing 
-        return f"{name} already exits. Now redirecting to sign-up"
-    else:
-        if Location.query.filter(Location.city == city):  #Checks to see if the city is already in db
+    if user == None:  
+        if location == None:  #Checks if location doesn't exist
+            state_id = Location.query.filter_by(state = state, city = None) #If location doesn't exist yet, give them a state code ALSO ADD A FLASH? ALSO UPDATE WHEN AN ARTIST ADDS A NEW LOCATION?
+            new_user = User(u_name = name, u_password = password, location_id = state_id.location_id) # Is this still a FK???
+            db.session.add(new_user)
+            db.session.commit()
+        else:
             loc_obj = Location.query.filter_by(city = city, state = state).one() # gets the PK from location db 
             new_user = User(u_name = name, u_password = password, location_id = loc_obj.location_id) # Is this still a FK???
             db.session.add(new_user)
             db.session.commit()
             return new_user
-        else:
-            loc_id = Location.query.filter_by(state = state) #Does mean I'd need state codes? Where State is a thing, but city is NOT 
-            new_user = User(u_name = name, u_password = password, loc_id = location_id) # Is this still a FK???
-            db.session.add(new_user)
-            db.session.commit()
+    else:
+        return f"{name} already exits. Now redirecting to sign-up"
+
 
 
 def create_artist(artist_name, artist_URI, city, state):
     """ Adds a new artist to the artist table"""
 
-    current_artist = db.session.query(User.u_name).all()
+    # current_artist = db.session.query(User.u_name).all()
+    artist = User.query.filter(Artist.artist_name == artist_name).one_or_none()
+    location = User.query.filter(Location.city == city, state == state).one_or_none()
 
-    if current_artist.filter(Artist.artist_name == artist_name):
-        return f"You're already in our database silly."
-    else:
-
-        if locations.query.filter(Location.city == city):  #What if city is NULLLL?
-            loc_id = Location.query.filter_by(city = city, state = state) # gets the PK from location db 
-            new_artist = Artist(artist_name = artist_name, artist_URI = artist_URI, location_id = loc_id)
-            db.session.add(new_artist)
-            db.session.commit()
-            return new_artist
-
-        else:        # Creates a new artist and a new location OR SHOULD I call the other function?
+    if artist == None:
+         if location == None:        # Creates a new artist and a new location OR SHOULD I call the other function? #SCALABILITY
             # new_location = Location(city = city, state = state)
             # db.session.add(new_location)
             # db.session.commit()
@@ -58,6 +54,16 @@ def create_artist(artist_name, artist_URI, city, state):
             db.session.add(new_user)
             db.session.commit()
             return new_location, new_artist
+
+        else:
+            loc_id = Location.query.filter_by(city = city, state = state) # gets the PK from location db 
+            new_artist = Artist(artist_name = artist_name, artist_URI = artist_URI, location_id = loc_id.location_id)
+            db.session.add(new_artist)
+            db.session.commit()
+            return new_artist
+    else:
+        return f"You're already in our database silly."
+       
 
 
 def create_location(state, city):
@@ -76,9 +82,11 @@ def create_location(state, city):
     return new_location 
 
 
+
 def get_artist():
     """ Gets all artists in a particular location """
 # Use a join function ??? 
+
 
 
 if __name__ == "__main__":
