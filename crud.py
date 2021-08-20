@@ -33,29 +33,29 @@ def create_user(name, password, city, state):
 def create_artist(artist_name, artist_URI, city, state):
     """ Adds a new artist to the artist table"""
 
-    # current_artist = db.session.query(User.u_name).all()
+    current_artist = db.session.query(User.u_name).all()
 
-    # if current_artist.filter(Artist.artist_name == artist_name):
-    #     return f"You're already in our database silly."
-    # else:
+    if current_artist.filter(Artist.artist_name == artist_name):
+        return f"You're already in our database silly."
+    else:
 
-    #     if locations.query.filter(Location.city == city):  #What if city is NULLLL?
-    #         loc_id = Location.query.filter_by(city = city, state = state) # gets the PK from location db 
-    #         new_artist = Artist(artist_name = artist_name, artist_URI = artist_URI, location_id = loc_id)
-    #         db.session.add(new_artist)
-    #         db.session.commit()
-    #         return new_artist
+        if locations.query.filter(Location.city == city):  #What if city is NULLLL?
+            loc_id = Location.query.filter_by(city = city, state = state) # gets the PK from location db 
+            new_artist = Artist(artist_name = artist_name, artist_URI = artist_URI, location_id = loc_id)
+            db.session.add(new_artist)
+            db.session.commit()
+            return new_artist
 
-        # else:        # Creates a new artist and a new location OR SHOULD I call the other function?
-        #     new_location = Location(city = city, state = state)
-        #     db.session.add(new_location)
-        #     db.session.commit()
+        else:        # Creates a new artist and a new location OR SHOULD I call the other function?
+            # new_location = Location(city = city, state = state)
+            # db.session.add(new_location)
+            # db.session.commit()
 
-        #     loc_id = Location.query.filter_by(state = state)
-        #     new_artist = Artist(artist_name = artist_name, artist_URI = artist_URI, location_id = loc_id)
-        #     db.session.add(new_user)
-        #     db.session.commit()
-        #     return new_location new_artist
+            loc_id = Location.query.filter_by(state = state)
+            new_artist = Artist(artist_name = artist_name, artist_URI = artist_URI, location_id = loc_id)
+            db.session.add(new_user)
+            db.session.commit()
+            return new_location, new_artist
 
 
 def create_location(state, city):

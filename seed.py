@@ -1,22 +1,29 @@
 """ Seeding my localsound db with data """
 
-# import model
+from model import db, User, Artist, Location, connect_to_db
 
-# def get_musicians():
-#     """ Load musician info from dataset into db """
+def populate_musicians():
+    """ Load musician info from dataset into db """
 
-#       DO A QUERY PULL FROM QRI INSTEAD SO MUCH EASIER
+    with open("xristosk-bandcamp_artists-2021-04.csv") as artist_data:
+        for i, row in enumerate(artist_data):
+            name = row[0]
+            URI = row[1]
+            city = row[4].split(',')
+            state = row[4] #This needs to be split for city and state
 
-#     with open("Project/Bandcamp_Artist.csv") as artist_data:
-#         for i, row in enumerate(artist_data):
-#             db.session.add(Artist(*row.rstrip().split("????")))
-#         print("{i} musicains have been added".format(i=i)
-#     db.session.commit()
+            # create_location()
+            # create_artist()
+
+            # db.session.add(Artist(*row.rstrip().split("????")))
+    #     print("{i} musicains have been added".format(i=i)
+    # db.session.commit()
 
 
 
-# if __name__ = '__main__':
-#     connect_to_db(app)
-#     db.create_all()
+if __name__ == '__main__':
+    from server import app
+    connect_to_db(app)
+    db.create_all()
 
-#     get_musicians()
+    get_musicians()
