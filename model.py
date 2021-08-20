@@ -88,6 +88,10 @@ if __name__ == "__main__":
     db.session.add(test_artist)
     db.session.commit()
 
-    test_location = Location(state = 'California', city = 'San Francisco')
+    test_location = Location(state = 'california', city = 'san francisco')
     db.session.add(test_location)
+    db.session.commit()
+
+    test_state_id = Location(state = 'ohio')
+    db.session.add(test_state_id)
     db.session.commit()
