@@ -10,14 +10,12 @@ from model import db, User, Artist, Location, connect_to_db
 # edit creat_user to check if a location exist then add it under the location id as a Forigne key
 # Call these functions in SEED
 
-# Look up what one or none does
-
 
 def create_user(name, password, city, state):
     """ Adds a new user to the user table"""
 
     user = User.query.filter(User.u_name == name).one_or_none() #us.one_or_none() - returns an error when nothing 
-    location = User.query.filter(Location.city == city, state == state).one_or_none()
+    location = Location.query.filter(Location.city == city, state == state).one_or_none()
 
     if user == None:  
         if location == None:  #Checks if location doesn't exist
@@ -44,7 +42,7 @@ def create_artist(artist_name, artist_URI, city, state):
     location = User.query.filter(Location.city == city, state == state).one_or_none()
 
     if artist == None:
-         if location == None:        # Creates a new artist and a new location OR SHOULD I call the other function? #SCALABILITY
+        if location == None:        # Creates a new artist and a new location OR SHOULD I call the other function? #SCALABILITY
             # new_location = Location(city = city, state = state)
             # db.session.add(new_location)
             # db.session.commit()
@@ -54,7 +52,6 @@ def create_artist(artist_name, artist_URI, city, state):
             db.session.add(new_user)
             db.session.commit()
             return new_location, new_artist
-
         else:
             loc_id = Location.query.filter_by(city = city, state = state) # gets the PK from location db 
             new_artist = Artist(artist_name = artist_name, artist_URI = artist_URI, location_id = loc_id.location_id)
