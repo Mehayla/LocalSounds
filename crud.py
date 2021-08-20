@@ -14,17 +14,19 @@ from model import db, User, Artist, Location, connect_to_db
 def create_user(name, password, city, state):
     """ Adds a new user to the user table"""
 
-    if User.query.filter(User.u_name == name): #This returns a boolean T/F
+    # user = User.query.filter(User.u_name == name).one_or_none()
+
+    if User.query.filter(User.u_name == name): #This returns a boolean T/F #us.one() - returns an error when nothing 
         return f"{name} already exits. Now redirecting to sign-up"
     else:
-        if locations.query.filter(Location.city == city):  #Checks to see if the city is already in db
-            loc_id = Location.query.filter_by(city = city, state = state) # gets the PK from location db 
-            new_user = User(u_name = name, u_password = password, loc_id = location_id) # Is this still a FK???
+        if Location.query.filter(Location.city == city):  #Checks to see if the city is already in db
+            loc_obj = Location.query.filter_by(city = city, state = state).one() # gets the PK from location db 
+            new_user = User(u_name = name, u_password = password, location_id = loc_obj.location_id) # Is this still a FK???
             db.session.add(new_user)
             db.session.commit()
             return new_user
         else:
-            loc_id = Location.query.filter_by(state = state) #Does mean I'd need state codes?
+            loc_id = Location.query.filter_by(state = state) #Does mean I'd need state codes? Where State is a thing, but city is NOT 
             new_user = User(u_name = name, u_password = password, loc_id = location_id) # Is this still a FK???
             db.session.add(new_user)
             db.session.commit()
