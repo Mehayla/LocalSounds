@@ -5,6 +5,9 @@ from model import db, User, Artist, Location, connect_to_db
 def set_state_codes():
     """ This adds 50 locations that are just states"""
 
+def set_country_codes():
+    """ This adds 190 locations that are just countries"""
+
 def populate_musicians():
     """ Load musician info from dataset into db """
 

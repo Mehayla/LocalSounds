@@ -3,22 +3,17 @@
 from model import db, User, Artist, Location, connect_to_db
 
 
-###  GAME PLAN   ###
-
-# create_location function will populate the location table
-# edit create_artist to check if a location exist then add it under the location id
-# edit creat_user to check if a location exist then add it under the location id as a Forigne key
-# Call these functions in SEED
-
-
 def create_user(name, password, city, state):
     """ Adds a new user to the user table"""
 
-    city = city.lower()
+    if city == '' or city == None:
+        city = None
+    else:
+        city = city.lower()
     state = state.lower()
 
     user = User.query.filter(User.u_name == name).one_or_none() #us.one_or_none() - returns an error when nothing 
-    location = Location.query.filter(Location.city == city, state == state).one_or_none()
+    location = Location.query.filter(Location.city == city, Location.state == state).one_or_none()
 
     if user == None:  
         if location == None:  #Checks if location doesn't exist
@@ -43,11 +38,15 @@ def create_artist(artist_name, artist_password, artist_URI, city, state):
     """ Adds a new artist to the artist table"""
 
     artist_name = artist_name.lower()
-    city = city.lower()
     state = state.lower()
 
+    if city == '' or city == None:
+        city = None
+    else:
+        city = city.lower()
+
     artist = Artist.query.filter(Artist.artist_name == artist_name).one_or_none()
-    location = Location.query.filter(Location.city == city, state == state).one_or_none()
+    location = Location.query.filter(Location.city == city, Location.state == state).one_or_none()
 
     if artist == None:
         if location == None:        # See create_location for why this is here
@@ -80,23 +79,32 @@ def create_location(city, state):
     # 2. When a user or artist inputs a location that is not currently in the db 3.0
 
     state = state.lower()
-    city = city.lower()
-    location = Location.query.filter(Location.city == city, state == state).one_or_none()
+    if city == '' or city == None:
+        city = None
+    else:
+        city = city.lower()
+
+    location = Location.query.filter(Location.city == city, Location.state == state).one_or_none()
 
     if location == None:
         new_location = Location(state = state, city = city)
         db.session.add(new_location)
         db.session.commit()
         return new_location
-    else:
-        pass
 
 
 
-def get_artist():
+def get_artists(city, state):
     """ Gets all artists in a particular location """
 
-# Use a join function ??? 
+    loc_obj = Location.query.filter(Location.city == city, Location.state == state).one()
+    artists = Artist.query.filter(Artist.location_id == loc_obj.location_id).all()
+    rec_lis = []
+
+    for artist in artists:
+        rec_lis.append(artist.artist_id)
+        
+    return rec_lis
 
 
 
