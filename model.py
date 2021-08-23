@@ -18,7 +18,7 @@ class User(db.Model):
     location_id = db.Column(db.Integer, db.ForeignKey('locations.location_id'))
 
     def __repr__(self):
-        return f"User {self.u_name} has a primary location in {self.location_id}"
+        return f"{self.u_name} is in {self.location_id} {self.location_id} \n"
 
 
 
@@ -36,7 +36,7 @@ class Artist(db.Model):
     location_id = db.Column(db.Integer, db.ForeignKey('locations.location_id'))
 
     def __repr__(self):
-        return f"{self.artist_name} is rockin! You can find them in {self.location_id}"
+        return f"{self.artist_name} is rockin in {self.location_id}\n"
 
 
 
@@ -56,7 +56,7 @@ class Location(db.Model):
 
 
     def __repr__(self):
-        return f"Location {self.city}, {self.state} has been created."
+        return f"Location {self.city}, {self.state} \n"
 
 
 def connect_to_db(flask_app, db_uri="postgresql:///localsound", echo = True):
