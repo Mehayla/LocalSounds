@@ -12,7 +12,7 @@ def populate_musicians():
         for i, row in enumerate(artist_data, start = 1):    
             if ',' not in row[4]:
                 state = row[4]
-                # new_location = create_location()
+                # new_location = create_location()              #DO LOCATIONS FIRST
                 # db.session.add(new_location)
                 # db.session.commit()
             else:

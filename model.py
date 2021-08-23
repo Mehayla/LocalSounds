@@ -30,8 +30,9 @@ class Artist(db.Model):
     artist_id = db.Column(db.Integer, 
                         primary_key = True,
                         autoincrement = True)
-    artist_name = db.Column(db.String)
-    artist_URI = db.Column(db.String, unique = True) 
+    artist_name = db.Column(db.String, unique = True)
+    artist_password = db.Column(db.String)
+    artist_URI = db.Column(db.String, unique = True)
     location_id = db.Column(db.Integer, db.ForeignKey('locations.location_id'))
 
     def __repr__(self):

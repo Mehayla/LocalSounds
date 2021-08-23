@@ -40,7 +40,7 @@ def create_user(name, password, city, state):
 
 
 
-def create_artist(artist_name, artist_URI, city, state):
+def create_artist(artist_name, artist_password, artist_URI, city, state):
     """ Adds a new artist to the artist table"""
 
     artist_name = artist_name.lower()
@@ -58,13 +58,13 @@ def create_artist(artist_name, artist_URI, city, state):
             # db.session.commit()
 
             loc_id = Location.query.filter_by(state = state)
-            new_artist = Artist(artist_name = artist_name, artist_URI = artist_URI, location_id = loc_id)
+            new_artist = Artist(artist_name = artist_name, artist_password = artist_password, artist_URI = artist_URI, location_id = loc_id)
             db.session.add(new_user)
             db.session.commit()
             return new_location, new_artist
         else:
             loc_id = Location.query.filter_by(city = city, state = state) # gets the PK from location db 
-            new_artist = Artist(artist_name = artist_name, artist_URI = artist_URI, location_id = loc_id.location_id)
+            new_artist = Artist(artist_name = artist_name, artist_password = artist_password, artist_URI = artist_URI, location_id = loc_id.location_id)
             db.session.add(new_artist)
             db.session.commit()
             return new_artist
