@@ -23,9 +23,8 @@ def create_user(name, password, city, state):
     if user == None:  
         if location == None:  #Checks if location doesn't exist
             state = Location.query.filter_by(state = state, city = None).one() #If location doesn't exist yet, give them a state code ALSO ADD A FLASH? ALSO UPDATE WHEN AN ARTIST ADDS A NEW LOCATION?
-            state_id = state.location_id
 
-            new_user = User(u_name = name, u_password = password, location_id = state_id) # Is this still a FK???
+            new_user = User(u_name = name, u_password = password, location_id = state.location_id) # Is this still a FK???
             db.session.add(new_user)
             db.session.commit()
             return new_user
@@ -47,8 +46,7 @@ def create_artist(artist_name, artist_password, artist_URI, city, state):
     city = city.lower()
     state = state.lower()
 
-    # current_artist = db.session.query(User.u_name).all()
-    artist = User.query.filter(Artist.artist_name == artist_name).one_or_none()
+    artist = Artist.query.filter(Artist.artist_name == artist_name).one_or_none()
     location = Location.query.filter(Location.city == city, state == state).one_or_none()
 
     if artist == None:
@@ -56,20 +54,21 @@ def create_artist(artist_name, artist_password, artist_URI, city, state):
             # new_location = Location(city = city, state = state)
             # db.session.add(new_location)
             # db.session.commit()
+            #return the new location?
 
-            loc_id = Location.query.filter_by(state = state)
-            new_artist = Artist(artist_name = artist_name, artist_password = artist_password, artist_URI = artist_URI, location_id = loc_id)
-            db.session.add(new_user)
+            loc_obj = Location.query.filter_by(state = state, city = None).one()
+            new_artist = Artist(artist_name = artist_name, artist_password = artist_password, artist_URI = artist_URI, location_id = loc_obj.location_id)
+            db.session.add(new_artist)
             db.session.commit()
-            return new_location, new_artist
+            return new_artist
         else:
-            loc_id = Location.query.filter_by(city = city, state = state) # gets the PK from location db 
-            new_artist = Artist(artist_name = artist_name, artist_password = artist_password, artist_URI = artist_URI, location_id = loc_id.location_id)
+            loc_obj = Location.query.filter_by(city = city, state = state).one() # gets the PK from location db 
+            new_artist = Artist(artist_name = artist_name, artist_password = artist_password, artist_URI = artist_URI, location_id = loc_obj.location_id)
             db.session.add(new_artist)
             db.session.commit()
             return new_artist
     else:
-        return f"You're already in our database silly."
+        return f"You're already in our database silly. Redirecting to sign-up"
        
 
 
@@ -96,6 +95,7 @@ def create_location(city, state):
 
 def get_artist():
     """ Gets all artists in a particular location """
+
 # Use a join function ??? 
 
 

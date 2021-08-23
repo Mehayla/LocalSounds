@@ -96,3 +96,7 @@ if __name__ == "__main__":
     test_state_id = Location(state = 'ohio')
     db.session.add(test_state_id)
     db.session.commit()
+
+    test_state_id_2 = Location(state = 'california')
+    db.session.add(test_state_id_2)
+    db.session.commit()
