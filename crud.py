@@ -43,6 +43,7 @@ def create_user(name, password, city, state):
 def create_artist(artist_name, artist_URI, city, state):
     """ Adds a new artist to the artist table"""
 
+    artist_name = artist_name.lower()
     city = city.lower()
     state = state.lower()
 
