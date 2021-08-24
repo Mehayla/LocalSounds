@@ -9,22 +9,25 @@ def set_state_codes():
 
     with open("State_country codes.csv") as state_country_data:
         for i, row in enumerate(state_country_data):
-            if i > 50:
-                break
-            else:
                 state = row.lower()
                 create_location(None, state)
                 # It add it with a + sign after the name? Not working and I am not sure why
+                # Keep getting now row was found when one was required
 
 
-# ON INIT #
-def set_country_codes():
-    """ This adds 190 locations that are just countries"""
+# # ON INIT #
+# def set_country_codes():
+#     """ This adds 190 locations that are just countries"""
+
+#     with open("State_country codes.csv") as state_country_data:
+#         for i, row in enumerate(state_country_data, start = 51):
+#             state = row.lower()
+#             create_location(None, state)
 
 
 def populate_musicians():
     """ Load musician info from dataset into db """
-
+    
     with open("xristosk-bandcamp_artists-2021-04.csv") as artist_data:
         for i, row in enumerate(artist_data, start = 1):    
             if ',' not in row[4]:
