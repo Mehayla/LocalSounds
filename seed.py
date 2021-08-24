@@ -5,24 +5,19 @@ from crud import create_user, create_artist, create_location
 
 # ON INIT #
 def set_state_codes():
-    """ This adds 50 locations that are just states"""
+    """ This adds 50 locations that are just states and 190 that are countires"""
 
     with open("State_country codes.csv") as state_country_data:
         for i, row in enumerate(state_country_data):
                 state = row.lower()
+                print(state)
                 create_location(None, state)
                 # It add it with a + sign after the name? Not working and I am not sure why
                 # Keep getting now row was found when one was required
 
+                # print(row[-3:]) == '\n'
+                # This prints the actual letters not \n
 
-# # ON INIT #
-# def set_country_codes():
-#     """ This adds 190 locations that are just countries"""
-
-#     with open("State_country codes.csv") as state_country_data:
-#         for i, row in enumerate(state_country_data, start = 51):
-#             state = row.lower()
-#             create_location(None, state)
 
 
 def populate_musicians():
