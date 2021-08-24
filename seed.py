@@ -1,12 +1,26 @@
 """ Seeding my localsound db with data """
 
 from model import db, User, Artist, Location, connect_to_db
+from crud import create_user, create_artist, create_location
 
+# ON INIT #
 def set_state_codes():
     """ This adds 50 locations that are just states"""
 
+    with open("State_country codes.csv") as state_country_data:
+        for i, row in enumerate(state_country_data):
+            if i > 50:
+                break
+            else:
+                state = row.lower()
+                create_location(None, state)
+                # It add it with a + sign after the name? Not working and I am not sure why
+
+
+# ON INIT #
 def set_country_codes():
     """ This adds 190 locations that are just countries"""
+
 
 def populate_musicians():
     """ Load musician info from dataset into db """
@@ -40,4 +54,4 @@ if __name__ == '__main__':
     connect_to_db(app)
     db.create_all()
 
-    get_musicians()
+    # get_musicians()

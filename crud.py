@@ -55,7 +55,7 @@ def create_artist(artist_name, artist_password, artist_URI, city, state):
             # db.session.commit()
             #return the new location?
 
-            loc_obj = Location.query.filter_by(state = state, city = None).one()
+            loc_obj = Location.query.filter(Location.state == state, Location.city == None).one()
             new_artist = Artist(artist_name = artist_name, artist_password = artist_password, artist_URI = artist_URI, location_id = loc_obj.location_id)
             db.session.add(new_artist)
             db.session.commit()

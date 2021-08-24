@@ -18,7 +18,7 @@ class User(db.Model):
     location_id = db.Column(db.Integer, db.ForeignKey('locations.location_id'))
 
     def __repr__(self):
-        return f"{self.u_name} is in {self.location_id} {self.location_id} \n"
+        return f"{self.u_name} is in {self.location_id} \n"
 
 
 
