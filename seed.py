@@ -2,21 +2,19 @@
 
 from model import db, User, Artist, Location, connect_to_db
 from crud import create_user, create_artist, create_location
+import os
 
-# ON INIT #
+os.system('dropdb localsound')
+os.system('createdb localsound')
+
+
 def set_state_codes():
     """ This adds 50 locations that are just states and 190 that are countires"""
 
     with open("State_country codes.csv") as state_country_data:
         for i, row in enumerate(state_country_data):
-                state = row.lower()
-                print(state)
+                state = row.lower().strip('\n')
                 create_location(None, state)
-                # It add it with a + sign after the name? Not working and I am not sure why
-                # Keep getting now row was found when one was required
-
-                # print(row[-3:]) == '\n'
-                # This prints the actual letters not \n
 
 
 
