@@ -2,12 +2,15 @@
 
 from model import db, User, Artist, Location, connect_to_db
 from crud import create_user, create_artist, create_location
+import pandas as pd
 import os
 import re
-import pandas as pd
 
-# os.system('dropdb localsound')
-# os.system('createdb localsound')
+
+
+os.system('dropdb localsound')
+os.system('createdb localsound')
+
 
 
 def set_state_codes():
@@ -25,18 +28,17 @@ def populate_musicians_loc():
 
     artist_data = pd.read_csv("xristosk-bandcamp_artists-2021-04.csv")
 
-    for i, row in artist_data.head(100).iterrows():
+    for i, row in artist_data.iterrows(): #What is I just pull everything from the csv?
         location = row['location'].split(',')
         try:
             city = location[0]
-            state = location[1]
+            state = location[1].strip()         #strip the sapce in front & end of state string
             create_location(city, state)
         except:
             city = None
             state = location[0]
             create_location(city, state)
 
-    
     # with open("xristosk-bandcamp_artists-2021-04.csv") as artist_data:
     #     for i, row in enumerate(artist_data, start = 1):
             # loc_serch = re.findall(r"\d{4,7},\"(\w+?\s*\w+),?(\D+?\s*\w+)?$", row) #Coping group 1 for group 2 = None for all of them??
@@ -45,8 +47,11 @@ def populate_musicians_loc():
             # print(loc_serch)
 
 
+
 def populate_artists():
     """ Load musican info from csv file"""
+
+    artist_data = pd.read_csv("xristosk-bandcamp_artists-2021-04.csv")
 
     name = row['artist_name']
     url = row['bc_url']

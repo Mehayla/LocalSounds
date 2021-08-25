@@ -91,6 +91,8 @@ def create_location(city, state):
         db.session.add(new_location)
         db.session.commit()
         return new_location
+    else:
+        pass
 
 
 
