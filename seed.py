@@ -4,6 +4,7 @@ from model import db, User, Artist, Location, connect_to_db
 from crud import create_user, create_artist, create_location
 import os
 import re
+import pandas as pd
 
 # os.system('dropdb localsound')
 # os.system('createdb localsound')
@@ -21,37 +22,40 @@ def set_state_codes():
 
 def populate_musicians_loc():
     """ Load musician location from dataset into db """
+
+    artist_data = pd.read_csv("xristosk-bandcamp_artists-2021-04.csv")
+
+    for i, row in artist_data.head(100).iterrows():
+        location = row['location'].split(',')
+        try:
+            city = location[0]
+            state = location[1]
+            create_location(city, state)
+        except:
+            city = None
+            state = location[0]
+            create_location(city, state)
+
     
-    with open("xristosk-bandcamp_artists-2021-04.csv") as artist_data:
-        for i, row in enumerate(artist_data, start = 1):
-            loc_serch = re.findall(r"\d{4,7},\"(\w+?\s*\w+),?(\D+?\s*\w+)?$", row) #Coping group 1 for group 2 = None for all of them??
+    # with open("xristosk-bandcamp_artists-2021-04.csv") as artist_data:
+    #     for i, row in enumerate(artist_data, start = 1):
+            # loc_serch = re.findall(r"\d{4,7},\"(\w+?\s*\w+),?(\D+?\s*\w+)?$", row) #Coping group 1 for group 2 = None for all of them??
             # loc_city = loc_serch.group(1)
             # loc_state = loc_serch.group(2) #PYTHON HATES GROUPING
-            print(loc_serch)
-            if i > 50:
-                break 
-
-            # r"(\d{5,7}),\"(\w+?,\s*\w+)" works for one word cities
-
-            # if state == None
-                # new_location = create_location(None, loc_city)              #DO LOCATIONS FIRST
-                # db.session.add(new_location)
-                # db.session.commit()
-            # else:
-                # new_location = create_location(loc_city, loc_state)
-                # db.session.add(new_location)
-                # db.session.commit()
+            # print(loc_serch)
 
 
 def populate_artists():
     """ Load musican info from csv file"""
 
-    with open("xristosk-bandcamp_artists-2021-04.csv") as artist_data:
-        for i, row in enumerate(artist_data, start = 1):
+    name = row['artist_name']
+    url = row['bc_url']
+
+    # with open("xristosk-bandcamp_artists-2021-04.csv") as artist_data:
+    #     for i, row in enumerate(artist_data, start = 1):
             # loc_serch = re.search(r"(\w+),\b", row)             # Give a match object?
             # print(loc_serch)
-            if i > 30:
-                break 
+
 
             # name = row[0]
             # URI = row[1]                            #Maybe add another table for genere? or just the Spotify API for dat
