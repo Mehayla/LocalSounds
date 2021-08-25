@@ -2,6 +2,8 @@
 
 from model import db, User, Artist, Location, connect_to_db
 
+# Need to make a password reset for artist - esp default artists
+
 
 def create_user(name, password, city, state):
     """ Adds a new user to the user table"""

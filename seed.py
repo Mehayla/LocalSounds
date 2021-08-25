@@ -8,9 +8,8 @@ import re
 
 
 
-os.system('dropdb localsound')
-os.system('createdb localsound')
-
+# os.system('dropdb localsound')
+# os.system('createdb localsound')
 
 
 def set_state_codes():
@@ -53,21 +52,21 @@ def populate_artists():
 
     artist_data = pd.read_csv("xristosk-bandcamp_artists-2021-04.csv")
 
-    name = row['artist_name']
-    url = row['bc_url']
+    for i, row in artist_data.iterrows():
+        name = row['artist_name']
+        url = row['bc_url']
+        location = row['location'].split(',')
+        password = 'potato'                     # I know there's a better way to do this lol
+        try:
+            city = location[0].strip()
+            state = location[1].strip()         #strip the sapce in front & end of state string
+            create_artist(name, password, url, city, state)
+        except:
+            city = None
+            state = location[0].strip()
+            create_artist(name, password, url, city, state)
 
-    # with open("xristosk-bandcamp_artists-2021-04.csv") as artist_data:
-    #     for i, row in enumerate(artist_data, start = 1):
-            # loc_serch = re.search(r"(\w+),\b", row)             # Give a match object?
-            # print(loc_serch)
-
-
-            # name = row[0]
-            # URI = row[1]                            #Maybe add another table for genere? or just the Spotify API for dat
-            # new_artist = create_artist()
-            # db.session.add(new_artist)
-            # db.session.commit()
-    # print("{i} musicains have been added".format(i=i)
+              #Maybe add another table for genere? or just the Spotify API for dat
 
 
 
