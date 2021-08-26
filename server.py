@@ -18,13 +18,29 @@ app = Flask(__name__)
 #         Or redirects?????
 
 
-# @app.route('')
+# @app.route('/')
+# def find_scene():
+#     """ Landing page """
+
+
+# @app.route('/search')
 # def find_scene():
 #     """ Search for artists based on locations"""
 
-#     postalcode = request.args.get('zipcode', '')
 
-#     url = ''
+# @app.route('/playlist')
+# def find_scene():
+#     """ Search for artists based on locations"""
+
+# Where the API recommendation is
+
+
+# @app.route('/artistinfo')
+# def find_scene():
+#     """ Search for artists based on locations"""
+# API for artist information
+# Bandcamp link etc
+
 
 if __name__ == "__main__":
     #DebugToolbarExtension(app)

@@ -6,10 +6,11 @@ import pandas as pd
 import os
 import re
 
-
-
 # os.system('dropdb localsound')
 # os.system('createdb localsound')
+
+# YOU HAVE TO RUN THESE FUNCTIONS IN THIS EXACT ORDER!
+
 
 
 def set_state_codes():
@@ -50,7 +51,7 @@ def populate_musicians_loc():
 def populate_artists():
     """ Load musican info from csv file"""
 
-    artist_data = pd.read_csv("xristosk-bandcamp_artists-2021-04.csv")
+    artist_data = pd.read_csv("xristosk-bandcamp_artists-2021-04.csv",converters={'artist_name':str})
 
     for i, row in artist_data.iterrows():
         name = row['artist_name']

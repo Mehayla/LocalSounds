@@ -25,7 +25,7 @@ class User(db.Model):
 class Artist(db.Model):
     """ The arts and location I am scrapping from a csv"""
 
-    __tablename__ = "artist"
+    __tablename__ = "artists"
 
     artist_id = db.Column(db.Integer, 
                         primary_key = True,

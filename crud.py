@@ -39,9 +39,7 @@ def create_user(name, password, city, state):
 def create_artist(artist_name, artist_password, artist_URI, city, state):
     """ Adds a new artist to the artist table"""
 
-    artist_name = artist_name.lower()
     state = state.lower()
-
     if city == '' or city == None:
         city = None
     else:
@@ -51,13 +49,13 @@ def create_artist(artist_name, artist_password, artist_URI, city, state):
     location = Location.query.filter(Location.city == city, Location.state == state).one_or_none()
 
     if artist == None:
-        if location == None:        # See create_location for why this is here
+        if location == None:        # See create_location for why this is here #When called in server call extra
             # new_location = Location(city = city, state = state)
             # db.session.add(new_location)
             # db.session.commit()
             #return the new location?
 
-            loc_obj = Location.query.filter(Location.state == state, Location.city == None).one()
+            loc_obj = Location.query.filter(Location.state == state, Location.city == None).one() #gets and sets default location
             new_artist = Artist(artist_name = artist_name, artist_password = artist_password, artist_URI = artist_URI, location_id = loc_obj.location_id)
             db.session.add(new_artist)
             db.session.commit()
