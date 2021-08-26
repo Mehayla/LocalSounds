@@ -1,6 +1,7 @@
 """ Server for LocalSound app """
 
-from flask import Flask, render_template, request
+from model import connect_to_db
+from flask import Flask, render_template, request, jsonify
 import crud
 
 app = Flask(__name__)
@@ -16,10 +17,6 @@ def welcome_home():
 
     return render_template("home.html")
 
-@app.route('/search')
-def find_scene():
-    """ Search for artists based on locations"""
-
 
 @app.route('/playlist')
 def heres_loc_artist():
@@ -31,20 +28,21 @@ def heres_loc_artist():
 @app.route('/artistinfo')
 def more_on_the_band():
     """ Search for artists based on locations"""
-# API for artist information
-# Bandcamp link etc
-    return render_template("artistinfo")
+    # API for artist information
+    # Bandcamp link etc
+    return render_template("artistinfo.html")
 
 
 @app.route('/sign-up')
 def get_dat_user():
-    if user == person:
-        make_new_user()
-    else:
-        make_new_artist()
-        Or redirects?????
-
+    # if user == person:
+    #     make_new_user()
+    # else:
+    #     make_new_artist()
+    #     Or redirects?????
+    pass
 
 if __name__ == "__main__":
-    #DebugToolbarExtension(app)
     app.run(host = "0.0.0.0", debug = True)
+    #DebugToolbarExtension(app)
+    connect_to_db(app)

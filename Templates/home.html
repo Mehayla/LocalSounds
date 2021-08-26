@@ -1,1 +1,20 @@
-{% extend base %}
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div>
+    <h1>Local Sound</h1>
+</div>
+
+<div class = "navbar">
+    <a href = 'thing I want to redirect to'>Thing</a>
+    <a href = 'thing I want to redirect to'>Sign-in</a>
+    <a href = 'thing I want to redirect to'>Sign-up</a>
+</div>
+
+<div class = "searchbar">
+    <input type="text" placeholder="City">
+    <input type="text" placeholder="US State/Country">
+</div>
+
+{% endblock %}
