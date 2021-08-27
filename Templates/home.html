@@ -3,11 +3,16 @@
 {% block body %}
 
 
-<div class = "searchbar">
+<form method = "GET" action = "/" class = "searchbar">
+    <div class="form-group">
+        <label for="search-keyword">Search Keyword</label>
+        <small class="form-text text-muted">
+        </small>
+
     <input type="text" placeholder="City">
     <input type="text" placeholder="US State/Country">
     <submit>Submit</submit>
-</div>
+</form>
 
 <!-- USE REACT TO JUST UPDATE THE HOMEPAGE WITH A PLAYLIST????? THAT MIGHT BE EASIEST DEPENDING ON HOW API WORKS -->
 <!-- Use AJAX to to populate React compnents w/ info from Flask -->
