@@ -3,13 +3,17 @@
 from model import connect_to_db
 from flask import Flask, render_template, request, jsonify
 import crud
+import json
+import requests
 
 app = Flask(__name__)
 
-
-## INSERT ROUTES HERE ##
-# JSON zipcode/city - 
-
+# Is this the right place????? #
+# music_json = open('music.json').read()
+# music_dic = json.loads(music_json)
+# print(music_dic)
+# GET https://api.spotify.com/v1/tracks
+# Try out a GET request in here
 
 @app.route('/')
 def welcome_home():
