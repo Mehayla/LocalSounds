@@ -12,6 +12,7 @@ API_KEY = os.environ['8f49c9011a8b4b078b1e282a748d0cf3']
 
 # Is this the right place????? #
 # When would I use get_artists?
+# I want a client side react app? Lets try it
 
 @app.route('/')
 def welcome_home():
