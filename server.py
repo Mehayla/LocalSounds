@@ -4,11 +4,13 @@ from model import connect_to_db
 from flask import Flask, render_template, request, jsonify
 import crud
 import json
+import os
+import requests
 
 app = Flask(__name__)
 app.secret_key = 'PoTaToS'
 app.config['PRESERVE_CONTEXT_ON_EXCEPTION'] = True
-API_KEY = os.environ['8f49c9011a8b4b078b1e282a748d0cf3']
+API_KEY = os.environ[SPOTIFY_API_KEY]
 
 # Is this the right place????? #
 # When would I use get_artists?
@@ -19,10 +21,11 @@ def welcome_home():
     """ Landing page """
 
     # tracks = request.arg.get('tracks','')
+    # payload = {'apikey', API_KEY}
 
-    url = 'https://api.spotify.com/v1/tracks'
-    payload = {'apikey', API_KEY}
+    res = request.get('https://api.spotify.com/v1/tracks')
     tracks = res.json()
+
 
     playlist = []
 

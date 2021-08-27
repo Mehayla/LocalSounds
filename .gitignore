@@ -3,6 +3,5 @@ env/
 __pycache__
 # users table - passwords
 # artist table - passwords
-payload
-API_KEY
-node_modules/
+node_modules/ 
+SECRETS.sh
