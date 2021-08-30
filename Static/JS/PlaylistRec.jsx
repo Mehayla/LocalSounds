@@ -4,6 +4,7 @@
 
 // $('.searchbar').on('click',() => {
 //     location.href="playlist"
+        // get_artists from CRUD???
 // }
 // );
 

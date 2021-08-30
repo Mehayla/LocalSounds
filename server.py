@@ -1,30 +1,39 @@
 """ Server for LocalSound app """
 
 from model import connect_to_db
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request
+from spotipy.oauth2 import SpotifyOAuth, SpotifyClientCredentials
+import spotipy
 import crud
-import json
 import os
 import requests
 
-app = Flask(__name__)
+API_KEY = os.environ['SPOTIPY_CLIENT_SECRET']
+SPOTIPY_CLIENT_ID = os.environ['SPOTIPY_CLIENT_ID']
 
+app = Flask(__name__)
+auth_manager = SpotifyClientCredentials()
+sp = spotipy.Spotify(auth_manager=auth_manager)
 
 # Is this the right place????? #
-# When would I use get_artists?
+# When would I use get_artists CRUD function? Call it in the JS event?
 
 @app.route('/')
 def welcome_home():
     """ Landing page """
-
-    # tracks = request.arg.get('tracks','')
-    # payload = {'apikey', API_KEY}
-
-    res = request.get('https://api.spotify.com/v1/tracks')
-    tracks = res.json()
-
-
     playlist = []
+
+    for artist in rec_list:                             # rec_list is what is given from get_artists
+        artist_info = sp.search(artist, limit = 1, type = 'artist')
+        artist_id = artist_info['artists']['items'][0]['id']
+
+        artist_tracks = sp.artist_top_tracks(artist_id)
+
+        track_album_name = artist_tracks['tracks'][0]['album']['name']
+        artist_name = artist_tracks['tracks'][0]['artists'][0]['name']
+        artist_uri = artist_tracks['tracks'][0]['uri'] #WHAT is a URI used for?
+        track_preview = artist_tracks['tracks'][0]['preview_url']
+        track_name = artist_tracks['tracks'][0]['name']
 
     return render_template("home.html", results=playlist)
 
@@ -32,11 +41,7 @@ def welcome_home():
 @app.route('/playlist')
 def heres_loc_artist():
     """ Search for artists based on locations"""
-    music_json = open('music.json').read()
-    music_dic = json.loads(music_json)
-    print(music_dic)
 
-# Where the API recommendation is
 
 
 

@@ -104,7 +104,7 @@ def get_artists(city, state):
     rec_lis = []
 
     for artist in artists:
-        rec_lis.append(artist.artist_id)
+        rec_lis.append(artist.artist_name)
         
     return rec_lis
 
