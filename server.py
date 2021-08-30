@@ -8,13 +8,10 @@ import os
 import requests
 
 app = Flask(__name__)
-app.secret_key = 'PoTaToS'
-app.config['PRESERVE_CONTEXT_ON_EXCEPTION'] = True
-API_KEY = os.environ[SPOTIFY_API_KEY]
+
 
 # Is this the right place????? #
 # When would I use get_artists?
-# I want a client side react app? Lets try it
 
 @app.route('/')
 def welcome_home():
