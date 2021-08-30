@@ -108,6 +108,8 @@ def get_artists(city, state):
         
     return rec_lis
 
+    #HAVE IT CHOSE A RANDOM 50?
+
 
 
 if __name__ == "__main__":

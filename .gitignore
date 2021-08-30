@@ -5,3 +5,4 @@ __pycache__
 # artist table - passwords
 node_modules/ 
 SECRETS.sh
+*.sh
