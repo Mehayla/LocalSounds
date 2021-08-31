@@ -27,8 +27,9 @@ function playlistRec(evt){
         'state':$('#state').val()
     };
 
-    $.post('/', formInputs, (res) => {
+    $.get('/', formInputs, (res) => {
 // THINGS AND STUFFS AND THING
+        $('#').html()
     });
 }
 
