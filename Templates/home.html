@@ -3,14 +3,13 @@
 {% block body %}
 
 
-<form method = "GET" action = "/" class = "searchbar">
-    <div class="form-group">
+<form id="searchbar">
         <label for="search-keyword">Search Keyword</label>
         <small class="form-text text-muted">
         </small>
 
-    <input type="text" placeholder="City">
-    <input type="text" placeholder="US State/Country">
+    <input type="text" placeholder="City" id="city" name="city">
+    <input type="text" placeholder="US State/Country" id="state" name="state">
     <submit>Submit</submit>
 </form>
 

@@ -3,8 +3,8 @@
 from model import connect_to_db
 from flask import Flask, render_template, request
 from spotipy.oauth2 import SpotifyOAuth, SpotifyClientCredentials
+from crud import get_artists
 import spotipy
-import crud
 import os
 import requests
 
@@ -23,8 +23,10 @@ def welcome_home():
     """ Landing page """
 
     city = request.form.get('city')
-    state = request.form.get('city')
+    state = request.form.get('state')
 
+    get_artists(city, state)
+    
     # playlist = []
 
     # for artist in rec_list:                             # rec_list is what is given from get_artists
