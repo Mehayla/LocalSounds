@@ -28,7 +28,7 @@ function playlistRec(evt){
     };
 
     $.post('/', formInputs, (res) => {
-// THINGS AND STUFFS AND THINGS
+// THINGS AND STUFFS AND THING
     });
 }
 
