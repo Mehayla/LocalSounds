@@ -1,6 +1,7 @@
 """ CRUD file for the LocalSound project """
 
 from model import db, User, Artist, Location, connect_to_db
+import random
 
 # Need to make a password reset for artist - esp default artists
 
@@ -101,14 +102,15 @@ def get_artists(city, state):
 
     loc_obj = Location.query.filter(Location.city == city, Location.state == state).one()
     artists = Artist.query.filter(Artist.location_id == loc_obj.location_id).all()
-    rec_lis = []
+    
+    rec_list = []
+    count = 0
 
     for artist in artists:
-        rec_lis.append(artist.artist_name)
-        
-    return rec_lis
+        rec_list.append(artist.artist_name)
 
-    #HAVE IT CHOSE A RANDOM 50?
+    rec_lis = random.sample(rec_list, k=50) #Picks 50 random artists
+    return rec_lis
 
 
 

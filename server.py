@@ -8,15 +8,15 @@ import spotipy
 import os
 import requests
 
-API_KEY = os.environ['SPOTIPY_CLIENT_SECRET']
-SPOTIPY_CLIENT_ID = os.environ['SPOTIPY_CLIENT_ID']
 
 app = Flask(__name__)
+
+API_KEY = os.environ['SPOTIPY_CLIENT_SECRET']
+SPOTIPY_CLIENT_ID = os.environ['SPOTIPY_CLIENT_ID']
 auth_manager = SpotifyClientCredentials()
 sp = spotipy.Spotify(auth_manager=auth_manager)
 
-# Is this the right place????? #
-# When would I use get_artists CRUD function? Call it in the JS event?
+
 
 @app.route('/')
 def welcome_home():
@@ -25,9 +25,9 @@ def welcome_home():
     city = request.form.get('city')
     state = request.form.get('state')
 
-    rec_list = get_artists(city, state) #WHERE DOES THIS GO???
+    rec_list = get_artists(city, state) 
     
-    for artist in rec_list:                             # rec_list is what is given from get_artists
+    for artist in rec_list:                             
         artist_info = sp.search(artist, limit = 1, type = 'artist')
         artist_id = artist_info['artists']['items'][0]['id']
 
@@ -44,10 +44,10 @@ def welcome_home():
     return render_template("home.html")
 
 
+
 @app.route('/playlist')
 def heres_loc_artist():
     """ Search for artists based on locations"""
-
 
 
 
