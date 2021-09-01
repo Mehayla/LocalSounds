@@ -36,13 +36,18 @@ def more_on_the_band():
     return render_template("artistinfo.html")
 
 
-@app.route('/sign-up')
+@app.route('/sign-up', methods=['GET'])
 def get_dat_user():
-    # if user == person:
-    #     make_new_user()
-    # else:
-    #     make_new_artist()
-    #     Or redirects?????
+    # selection = request.form.get('user_type')
+
+    # username = request.form.get('username')
+    # password = request.form.get('password')
+    # city = request.form.get('city')
+    # state = request.form.get('state')
+
+    # create_user(username, password, city, state)
+
+    # return render_template("sign-up.html")
     pass
 
 if __name__ == "__main__":
