@@ -1,17 +1,21 @@
 {% extends 'base.html' %}
 
 {% block body %}
+
 <form id="signup" method='post'>
     <label for="search-keyword">Search Keyword</label>
     <small class="form-text text-muted">
     </small>
 
-<input type="text" placeholder="Username" id="un" name="username">
-<input type="text" placeholder="Password" id="password" name="password">
-<input type="text" placeholder="City" id="usercity" name="city">
-<input type="text" placeholder="US State/Country" id="userstate" name="state">
+    <button type='radio' name='user_type' id='person_user'>Person</button>
+    <button type='radio' name='user_type' id='artist_user'>Artist</button>
 
-<input type="submit" id="search-button"></input>
+    <input type="text" placeholder="Username" id="un" name="username">
+    <input type="text" placeholder="Password" id="password" name="password">
+    <input type="text" placeholder="City" id="usercity" name="city">
+    <input type="text" placeholder="US State/Country" id="userstate" name="state">
+
+    <input type="submit" id="search-button"></input>
 </form>
 
 {% endblock %}

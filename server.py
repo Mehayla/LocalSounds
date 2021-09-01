@@ -28,27 +28,41 @@ def welcome_home():
     return render_template("home.html")
 
 
-@app.route('/artistinfo')
-def more_on_the_band():
-    """ Search for artists based on locations"""
-    # API for artist information
-    # Bandcamp link etc
-    return render_template("artistinfo.html")
-
-
-@app.route('/sign-up', methods=['GET'])
+@app.route('/sign-up', methods=['GET','POST'])
 def get_dat_user():
-    # selection = request.form.get('user_type')
+    selection = request.form.get('user_type')    # This would need to be in log-in too
 
-    # username = request.form.get('username')
-    # password = request.form.get('password')
-    # city = request.form.get('city')
-    # state = request.form.get('state')
+    if selection == 'person':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        city = request.form.get('city')
+        state = request.form.get('state')
 
-    # create_user(username, password, city, state)
+        create_user(username, password, city, state)
 
-    # return render_template("sign-up.html")
-    pass
+        return render_template("sign-up.html", username=username, password=password, city=city, state=state)
+
+    if selection == 'artist':               # Make a smaller test db or delete 
+        username = request.form.get('username')
+        password = request.form.get('password')
+        profile_link = request.form.get('profile_link')
+        city = request.form.get('city')
+        state = request.form.get('state')
+
+        create_artist(username, password, profile_link, city, state)
+
+        return render_template("sign-up.html", username=username, password=password, profile_link=profile_link, city=city, state=state)
+
+    return render_template("sign-up.html", user_type=user_type)
+
+
+# @app.route('/artistinfo')
+# def more_on_the_band():
+#     """ Search for artists based on locations"""
+#     # API for artist information
+#     # Bandcamp link etc
+#     return render_template("artistinfo.html")
+pass
 
 if __name__ == "__main__":
     connect_to_db(app)
