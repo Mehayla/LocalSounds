@@ -109,7 +109,7 @@ def get_artists(city, state):
     for artist in artists:
         rec_list.append(artist.artist_name)
 
-    rec_lis = random.sample(rec_list, k=10) #Picks 50 random artists
+    rec_lis = random.sample(rec_list, k=5) #Picks 50 random artists
     return rec_lis
 
 

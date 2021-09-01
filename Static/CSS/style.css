@@ -6,3 +6,24 @@
 .navbar a.active {} highlights when you're on that page
 
 .searchbar{} */
+
+
+
+.column {
+    float: left;
+  }
+  
+  #artist_name, #artist_album {
+    width: 25%;
+  }
+  
+  #artist_toptrack {
+    width: 50%;
+  }
+
+  
+.row.after {
+    content: "";
+    display: table;
+    clear: both;
+}

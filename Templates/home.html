@@ -15,7 +15,11 @@
 
 <div id = 'playlist'>
     {% for item in rec_list %}
-        <div id='testid'>{{ item }}</div>
+        <div class='row'>
+            <div class='column' id='artist_name'>{{ item }}</div>
+            <div class='column' id='artist_toptrack'>{{ item }}</div>
+            <div class='column' id='artist_album'>{{ item }}</div>
+        </div>
     {% endfor %}
 </div>
 
