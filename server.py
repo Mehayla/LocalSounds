@@ -22,28 +22,32 @@ sp = spotipy.Spotify(auth_manager=auth_manager)
 def welcome_home():
     """ Landing page """
 
-    city = request.form.get('city')
-    state = request.form.get('state')
+    if request.method == 'POST':                # Will only hit here when the post request was made
+        city = request.form.get('city')
+        state = request.form.get('state')
 
-    rec_list = get_artists(city, state) #It is waiting to get this when first loading soooo . . . .
-    # spotify_id = []
+        rec_list = get_artists(city, state) 
+
+        spotify_dic = {} # Make this a dictionary???? perhaps . . . 
     
-    # for artist in rec_list:                             
-    #     artist_info = sp.search(artist, limit = 1, type = 'artist')
-    #     artist_id = artist_info['artists']['items'][0]['id']
-    #     spotify_id.append(artist_id)
+        for artist in rec_list:                             
+            artist_info = sp.search(artist, limit = 1, type = 'artist')
+            artist_id = artist_info['artists']['items'][0]['id']
+            spotify_id.append(artist_id)
     
-    #     artist_tracks = sp.artist_top_tracks(artist_id)
+            artist_tracks = sp.artist_top_tracks(artist_id)
 
-    #     track_album_name = artist_tracks['tracks'][0]['album']['name']
-    #     artist_name = artist_tracks['tracks'][0]['artists'][0]['name']
-    #     artist_uri = artist_tracks['tracks'][0]['uri'] #WHAT is a URI used for?
-    #     track_preview = artist_tracks['tracks'][0]['preview_url']
-    #     track_name = artist_tracks['tracks'][0]['name']
+            track_album_name = artist_tracks['tracks'][0]['album']['name']
+            artist_name = artist_tracks['tracks'][0]['artists'][0]['name']
+            artist_uri = artist_tracks['tracks'][0]['uri'] #WHAT is a URI used for?
+            track_preview = artist_tracks['tracks'][0]['preview_url']
+            track_name = artist_tracks['tracks'][0]['name']
 
-    payload = []
+        payload = []
+        return render_template("home.html", spotify_dic=spotify_dic)
 
-    return render_template("home.html", rec_list=rec_list )
+
+    return render_template("home.html")
 
 # @app.route('/location.json')
 # def welcome_home():

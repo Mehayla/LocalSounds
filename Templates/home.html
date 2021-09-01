@@ -14,6 +14,7 @@
 </form>
 
 <div id = 'playlist'>
+    <h3>~ Insert column headers here ~</h3>
     {% for item in rec_list %}
         <div class='row'>
             <div class='column' id='artist_name'>{{ item }}</div>
@@ -23,12 +24,19 @@
     {% endfor %}
 </div>
 
+<!-- EXAMPLE HERE 
+{% for intf in interfaces -%}
+interface {{ intf }}
+ description {{ interfaces[intf].description }}
+ ip address {{ interfaces[intf].ipv4_address }}
+{% endfor %} -->
+
 <!-- USE REACT TO JUST UPDATE THE HOMEPAGE WITH A PLAYLIST????? THAT MIGHT BE EASIEST DEPENDING ON HOW API WORKS -->
 <!-- Use AJAX to to populate React compnents w/ info from Flask -->
 
 {% endblock %}
 
-{% block js %}
-    <!-- <script type='text/jsx' src='/Static/PlaylistRec.jsx'></script> -->
+<!-- {% block js %}
+    <script type='text/jsx' src='/Static/PlaylistRec.jsx'></script>
     <script type='text/jsx' src='/Static/JS/playlist_rec.js'></script>
-{% endblock %}
+{% endblock %} -->

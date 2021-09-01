@@ -10,15 +10,22 @@
 
 
 .column {
-    float: left;
-  }
-  
-  #artist_name, #artist_album {
     width: 25%;
   }
   
-  #artist_toptrack {
-    width: 50%;
+#artist_name {
+    text-decoration-color: blue;
+    align-content:left;
+  }
+  
+#artist_album {
+    text-decoration-color:blueviolet;
+    align-content:right;
+  }
+  
+#artist_toptrack {
+    text-decoration-color: red;
+    align-content:center;
   }
 
   
