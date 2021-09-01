@@ -13,13 +13,14 @@
     <input type="submit" id="search-button"></input>
 </form>
 
-<div id = 'playlist'>
+<!-- look into table function or bootstrap -->
+<div id = 'playlist'> 
     <h3>~ Insert column headers here ~</h3>
     {% for item in rec_list %}
         <div class='row'>
-            <div class='column' id='artist_name'>{{ item }}</div>
-            <div class='column' id='artist_toptrack'>{{ item }}</div>
-            <div class='column' id='artist_album'>{{ item }}</div>
+            <div class='artist_name'>{{ item }}</div>
+            <div class='artist_toptrack'>{{ item }}</div>
+            <div class='artist_album'>{{ item }}</div>
         </div>
     {% endfor %}
 </div>

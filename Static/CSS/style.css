@@ -9,22 +9,22 @@
 
 
 
-.column {
+/* .column {
     width: 25%;
-  }
+  } */
   
-#artist_name {
-    text-decoration-color: blue;
+.artist_name {
+    color: blue;
     align-content:left;
   }
   
-#artist_album {
-    text-decoration-color:blueviolet;
+.artist_album {
+    color:blueviolet;
     align-content:right;
   }
   
-#artist_toptrack {
-    text-decoration-color: red;
+.artist_toptrack {
+    color: red;
     align-content:center;
   }
 
