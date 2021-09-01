@@ -15,22 +15,30 @@
   
 .artist_name {
     color: blue;
-    align-content:left;
+    align-self:left;
   }
   
 .artist_album {
     color:blueviolet;
-    align-content:right;
+    align-self:right;
   }
   
 .artist_toptrack {
     color: red;
-    align-content:center;
+    align-self:center;
   }
 
+.track_preview {
+    align-self: right;
+}
+
+.column_name {
+    
+}
   
-.row.after {
+/* .row.after {
     content: "";
     display: table;
     clear: both;
-}
+} */
+

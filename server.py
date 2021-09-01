@@ -19,18 +19,13 @@ def welcome_home():
         state = request.form.get('state')
 
         rec_list = get_artists(city, state) 
-
         playlist = spotify_info(rec_list)       #Playlist is a dictionary #TO-DO: use cases for missing information
 
-        # payload = []
-        return render_template("home.html", playlist=playlist)
+        column_headers = ['Name','Track','Album','Preview']
 
+        return render_template("home.html", playlist=playlist, column_headers=column_headers)
 
     return render_template("home.html")
-
-# @app.route('/location.json')
-# def welcome_home():
-#     """ The request handler ????? """
 
 
 @app.route('/artistinfo')

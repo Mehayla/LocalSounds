@@ -15,7 +15,10 @@
 
 <!-- look into table function or bootstrap -->
 <div id = 'playlist'> 
-    <h3>~ Insert column headers here ~</h3>
+    {% for column_header in column_headers %}
+        <h4 class='column_name'>{{ column_header }}</h4>
+    {% endfor %}
+
     {% for item in playlist %}
         <div class='row'>
             <div class='artist_name'>{{ playlist[item]['artist_name'] }}</div>
