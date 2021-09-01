@@ -2,7 +2,6 @@
 
 {% block body %}
 
-
 <form id="searchbar" action='/' method='post'>
         <label for="search-keyword">Search Keyword</label>
         <small class="form-text text-muted">
@@ -13,28 +12,22 @@
     <input type="submit" id="search-button"></input>
 </form>
 
-<!-- look into table function or bootstrap -->
 <div id = 'playlist'> 
+ 
     {% for column_header in column_headers %}
-        <h4 class='column_name'>{{ column_header }}</h4>
+            <div class='column_head' class='col'>{{ column_header }}</div>
     {% endfor %}
 
     {% for item in playlist %}
         <div class='row'>
-            <div class='artist_name'>{{ playlist[item]['artist_name'] }}</div>
-            <div class='artist_toptrack'>{{ playlist[item]['track_name'] }}</div>
-            <div class='artist_album'>{{ playlist[item]['album_name'] }}</div>
-            <div class='track_preview'>{{ playlist[item]['track_preview'] }}</div>
+            <div class='artist_name' class='col'>{{ playlist[item]['artist_name'] }}</div>
+            <div class='artist_toptrack' class='col'>{{ playlist[item]['track_name'] }}</div>
+            <div class='artist_album' class='col'>{{ playlist[item]['album_name'] }}</div>
+            <div class='track_preview' class='col'>{{ playlist[item]['track_preview'] }}</div>
         </div>
     {% endfor %}
 </div>
 
-<!-- EXAMPLE HERE 
-{% for intf in interfaces -%}
-interface {{ intf }}
- description {{ interfaces[intf].description }}
- ip address {{ interfaces[intf].ipv4_address }}
-{% endfor %} -->
 
 <!-- USE REACT TO JUST UPDATE THE HOMEPAGE WITH A PLAYLIST????? THAT MIGHT BE EASIEST DEPENDING ON HOW API WORKS -->
 <!-- Use AJAX to to populate React compnents w/ info from Flask -->

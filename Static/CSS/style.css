@@ -1,44 +1,48 @@
+.maincharacterenergy {
+    color:seagreen;
+    font-family: filmotype-maxwell, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size:180;
+
+}
+
 /* .navbar { 
 
 }
 .navbar a {} links inside the navbar
 .navbar a:hover {} color of links when hovering
-.navbar a.active {} highlights when you're on that page
+.navbar a.active {} highlights when you're on that page */
+/* 
 
-.searchbar{} */
-
-
-
-/* .column {
-    width: 25%;
-  } */
+.column_head {
+    margin-right: 20px;
+} */
   
 .artist_name {
     color: blue;
-    align-self:left;
+    font-family: filmotype-maxwell, sans-serif;
+    font-weight: 400;
+    font-style: normal;
   }
   
 .artist_album {
     color:blueviolet;
-    align-self:right;
+    font-family: hwt-arabesque, sans-serif;
+    font-weight: 400;
+    font-style: normal;
   }
   
 .artist_toptrack {
     color: red;
-    align-self:center;
   }
 
-.track_preview {
-    align-self: right;
-}
+/* .track_preview {
+} */
 
-.column_name {
-    
-}
-  
-/* .row.after {
+.row.after {
     content: "";
     display: table;
     clear: both;
-} */
+}
 
