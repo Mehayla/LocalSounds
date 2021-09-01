@@ -2,20 +2,12 @@
 
 from model import connect_to_db
 from flask import Flask, render_template, request
-from spotipy.oauth2 import SpotifyOAuth, SpotifyClientCredentials
-from crud import get_artists
-import spotipy
+from crud import get_artists, spotify_info
 import os
 import requests
 
 
 app = Flask(__name__)
-
-API_KEY = os.environ['SPOTIPY_CLIENT_SECRET']
-SPOTIPY_CLIENT_ID = os.environ['SPOTIPY_CLIENT_ID']
-auth_manager = SpotifyClientCredentials()
-sp = spotipy.Spotify(auth_manager=auth_manager)
-
 
 
 @app.route('/', methods=['GET','POST']) #The GET is for when / is first loaded b/c not getting a post
@@ -28,25 +20,10 @@ def welcome_home():
 
         rec_list = get_artists(city, state) 
 
-        # spotify_dic = {} # Make this a dictionary???? perhaps . . . Make this a CRUD funtion 
-    
-        # for artist in rec_list:                             
-        #     artist_info = sp.search(artist, limit = 1, type = 'artist')
-        #     artist_id = artist_info['artists']['items'][0]['id']
-        #     spotify_id.append(artist_id)
-    
-        #     artist_tracks = sp.artist_top_tracks(artist_id)
-
-        #     track_album_name = artist_tracks['tracks'][0]['album']['name']
-        #     artist_name = artist_tracks['tracks'][0]['artists'][0]['name']
-        #     artist_uri = artist_tracks['tracks'][0]['uri'] #WHAT is a URI used for?
-        #     track_preview = artist_tracks['tracks'][0]['preview_url']
-        #     track_name = artist_tracks['tracks'][0]['name']
-
-        # spotify_dic=spotify_dic
+        playlist = spotify_info(rec_list)
 
         # payload = []
-        return render_template("home.html", rec_list=rec_list)
+        return render_template("home.html", playlist=playlist)
 
 
     return render_template("home.html")

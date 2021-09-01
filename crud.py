@@ -1,7 +1,15 @@
 """ CRUD file for the LocalSound project """
 
 from model import db, User, Artist, Location, connect_to_db
+from spotipy.oauth2 import SpotifyOAuth, SpotifyClientCredentials
+import spotipy
 import random
+import os
+
+API_KEY = os.environ['SPOTIPY_CLIENT_SECRET']
+SPOTIPY_CLIENT_ID = os.environ['SPOTIPY_CLIENT_ID']
+auth_manager = SpotifyClientCredentials()
+sp = spotipy.Spotify(auth_manager=auth_manager)
 
 # Need to make a password reset for artist - esp default artists
 
@@ -100,6 +108,8 @@ def create_location(city, state):
 def get_artists(city, state):
     """ Gets all artists in a particular location """
 
+    city.lower()
+    state.lower()
     loc_obj = Location.query.filter(Location.city == city, Location.state == state).one()
     artists = Artist.query.filter(Artist.location_id == loc_obj.location_id).all()
     
@@ -112,6 +122,33 @@ def get_artists(city, state):
     rec_lis = random.sample(rec_list, k=5) #Picks 50 random artists
     return rec_lis
 
+
+def spotify_info(artists):
+    """ This takes in a pre-selected artist list and returns a sorted dictionary """
+
+    spotify_dic = {} # Make this a dictionary???? perhaps . . . Make this a CRUD funtion 
+    count = 0
+
+    for artist in artists:                             
+        artist_info = sp.search(artist, limit = 1, type = 'artist')
+        artist_id = artist_info['artists']['items'][0]['id']
+    
+        artist_tracks = sp.artist_top_tracks(artist_id)
+
+        spotify_dic[f'artist_name_{count}'] = artist_tracks['tracks'][0]['artists'][0]['name']
+        spotify_dic[f'track_name_{count}'] = artist_tracks['tracks'][0]['name']
+        spotify_dic[f'album_name_{count}'] = artist_tracks['tracks'][0]['album']['name']
+        spotify_dic[f'track_preview_{count}'] = artist_tracks['tracks'][0]['preview_url']
+
+        count += 1
+
+            # track_album_name = artist_tracks['tracks'][0]['album']['name']
+            # artist_name = artist_tracks['tracks'][0]['artists'][0]['name']
+            # artist_uri = artist_tracks['tracks'][0]['uri'] #WHAT is a URI used for?
+            # track_preview = artist_tracks['tracks'][0]['preview_url']
+            # track_name = artist_tracks['tracks'][0]['name']
+
+    return spotify_dic
 
 
 if __name__ == "__main__":
