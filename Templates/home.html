@@ -16,11 +16,12 @@
 <!-- look into table function or bootstrap -->
 <div id = 'playlist'> 
     <h3>~ Insert column headers here ~</h3>
-    {% for item in rec_list %}
+    {% for item in playlist %}
         <div class='row'>
-            <div class='artist_name'>{{ item }}</div>
-            <div class='artist_toptrack'>{{ item }}</div>
-            <div class='artist_album'>{{ item }}</div>
+            <div class='artist_name'>{{ playlist[item]['artist_name'] }}</div>
+            <div class='artist_toptrack'>{{ playlist[item]['track_name'] }}</div>
+            <div class='artist_album'>{{ playlist[item]['album_name'] }}</div>
+            <div class='track_preview'>{{ playlist[item]['track_preview'] }}</div>
         </div>
     {% endfor %}
 </div>

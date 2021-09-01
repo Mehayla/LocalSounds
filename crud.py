@@ -129,24 +129,22 @@ def spotify_info(artists):
     spotify_dic = {} # Make this a dictionary???? perhaps . . . Make this a CRUD funtion 
     count = 0
 
-    for artist in artists:                             
+    for artist in artists:
+
         artist_info = sp.search(artist, limit = 1, type = 'artist')
-        artist_id = artist_info['artists']['items'][0]['id']
+        artist_items = artist_info['artists']['items']
+
+        if len(artist_items) > 0:
+            spotify_dic[count] = {}
     
-        artist_tracks = sp.artist_top_tracks(artist_id)
+            artist_tracks = sp.artist_top_tracks(artist_items[0]['id'])
 
-        spotify_dic[f'artist_name_{count}'] = artist_tracks['tracks'][0]['artists'][0]['name']
-        spotify_dic[f'track_name_{count}'] = artist_tracks['tracks'][0]['name']
-        spotify_dic[f'album_name_{count}'] = artist_tracks['tracks'][0]['album']['name']
-        spotify_dic[f'track_preview_{count}'] = artist_tracks['tracks'][0]['preview_url']
+            spotify_dic[count]['artist_name'] = artist_tracks['tracks'][0]['artists'][0]['name']
+            spotify_dic[count]['track_name'] = artist_tracks['tracks'][0]['name']
+            spotify_dic[count]['album_name'] = artist_tracks['tracks'][0]['album']['name']
+            spotify_dic[count]['track_preview'] = artist_tracks['tracks'][0]['preview_url']
 
-        count += 1
-
-            # track_album_name = artist_tracks['tracks'][0]['album']['name']
-            # artist_name = artist_tracks['tracks'][0]['artists'][0]['name']
-            # artist_uri = artist_tracks['tracks'][0]['uri'] #WHAT is a URI used for?
-            # track_preview = artist_tracks['tracks'][0]['preview_url']
-            # track_name = artist_tracks['tracks'][0]['name']
+            count += 1
 
     return spotify_dic
 
