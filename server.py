@@ -18,7 +18,7 @@ sp = spotipy.Spotify(auth_manager=auth_manager)
 
 
 
-@app.route('/')
+@app.route('/', methods=['GET','POST']) #The GET is for when / is first loaded b/c not getting a post???
 def welcome_home():
     """ Landing page """
 
@@ -27,22 +27,25 @@ def welcome_home():
 
     rec_list = get_artists(city, state) 
     
-    for artist in rec_list:                             
-        artist_info = sp.search(artist, limit = 1, type = 'artist')
-        artist_id = artist_info['artists']['items'][0]['id']
+    # for artist in rec_list:                             
+    #     artist_info = sp.search(artist, limit = 1, type = 'artist')
+    #     artist_id = artist_info['artists']['items'][0]['id']
 
-        artist_tracks = sp.artist_top_tracks(artist_id)
+    #     artist_tracks = sp.artist_top_tracks(artist_id)
 
-        track_album_name = artist_tracks['tracks'][0]['album']['name']
-        artist_name = artist_tracks['tracks'][0]['artists'][0]['name']
-        artist_uri = artist_tracks['tracks'][0]['uri'] #WHAT is a URI used for?
-        track_preview = artist_tracks['tracks'][0]['preview_url']
-        track_name = artist_tracks['tracks'][0]['name']
+    #     track_album_name = artist_tracks['tracks'][0]['album']['name']
+    #     artist_name = artist_tracks['tracks'][0]['artists'][0]['name']
+    #     artist_uri = artist_tracks['tracks'][0]['uri'] #WHAT is a URI used for?
+    #     track_preview = artist_tracks['tracks'][0]['preview_url']
+    #     track_name = artist_tracks['tracks'][0]['name']
 
     payload = []
 
-    return render_template("home.html")
+    return render_template("home.html", )
 
+# @app.route('/location.json')
+# def welcome_home():
+#     """ The request handler ????? """
 
 
 @app.route('/playlist')
@@ -69,6 +72,6 @@ def get_dat_user():
     pass
 
 if __name__ == "__main__":
+    connect_to_db(app)
     app.run(host = "0.0.0.0", debug = True)
     #DebugToolbarExtension(app)
-    connect_to_db(app)

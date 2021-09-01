@@ -22,15 +22,17 @@
 function playlistRec(evt){
     evt.preventDefault();
 
+    alert('I got this far')
+
     const formInputs = {
         'city':$('#city').val(),
         'state':$('#state').val()
     };
 
     $.get('/', formInputs, (res) => {
-// THINGS AND STUFFS AND THING
-        $('#').html()
+        alert(`This is working! ${res.city}, ${res.state}`)
+        // $('#playlist').html(res)
     });
 }
 
-$("#searchbar").on('submit', playlistRec)
+$("#search-button").on('submit', playlistRec)

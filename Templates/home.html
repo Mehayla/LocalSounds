@@ -3,17 +3,20 @@
 {% block body %}
 
 
-<form id="searchbar">
+<form id="searchbar" action='/' method='post'>
         <label for="search-keyword">Search Keyword</label>
         <small class="form-text text-muted">
         </small>
 
     <input type="text" placeholder="City" id="city" name="city">
     <input type="text" placeholder="US State/Country" id="state" name="state">
-    <submit>Submit</submit>
+    <input type="submit" id="search-button"></input>
 </form>
 
 <div id = 'playlist'>
+    {% for item in rec_list %}
+        <div id='testid'>{{ item }}</div>
+    {% endfor %}
 </div>
 
 <!-- USE REACT TO JUST UPDATE THE HOMEPAGE WITH A PLAYLIST????? THAT MIGHT BE EASIEST DEPENDING ON HOW API WORKS -->
@@ -23,5 +26,5 @@
 
 {% block js %}
     <!-- <script type='text/jsx' src='/Static/PlaylistRec.jsx'></script> -->
-    <script type='text/jsx' src='/Static/playlist_rec.js'></script>
+    <script type='text/jsx' src='/Static/JS/playlist_rec.js'></script>
 {% endblock %}
