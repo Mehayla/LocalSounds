@@ -13,7 +13,6 @@ sp = spotipy.Spotify(auth_manager=auth_manager)
 
 # Need to make a password reset for artist - esp default artists
 
-
 def create_user(name, password, city, state):
     """ Adds a new user to the user table"""
 
@@ -110,12 +109,15 @@ def get_artists(city, state):
 
     city.lower()
     state.lower()
-    loc_obj = Location.query.filter(Location.city == city, Location.state == state).one()
-    artists = Artist.query.filter(Artist.location_id == loc_obj.location_id).all()
-    
     rec_list = []
     count = 0
 
+    loc_obj = Location.query.filter(Location.city == city, Location.state == state).first()
+    if loc_obj is None:
+        loc_obj = Location.query.filter(Location.city == None, Location.state == state).one()
+        
+    artists = Artist.query.filter(Artist.location_id == loc_obj.location_id).all()
+    
     for artist in artists:
         rec_list.append(artist.artist_name)
 
@@ -126,16 +128,18 @@ def get_artists(city, state):
 def spotify_info(artists):
     """ This takes in a pre-selected artist list and returns a sorted dictionary """
 
-    spotify_dic = {} # Make this a dictionary???? perhaps . . . Make this a CRUD funtion 
+    spotify_dic = {}
     count = 0
 
     for artist in artists:
 
+        print(artist)
         artist_info = sp.search(artist, limit = 1, type = 'artist')
         artist_items = artist_info['artists']['items']
+        print(artist_items)
 
-        if len(artist_items) > 0:               # We need to to fix this again
-            spotify_dic[count] = {}
+        if len(artist_items) > 0:                     # Make a if else statement check if artist == artist_info['name'].lower()
+            spotify_dic[count] = {}                    # Keep len b/c key errors suck
     
             artist_tracks = sp.artist_top_tracks(artist_items[0]['id'])
 
