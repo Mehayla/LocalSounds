@@ -107,8 +107,8 @@ def create_location(city, state):
 def get_artists(city, state):
     """ Gets all artists in a particular location """
 
-    city.lower()
-    state.lower()
+    city = city.lower()
+    state = state.lower()
     rec_list = []
     count = 0
 
@@ -125,6 +125,7 @@ def get_artists(city, state):
     return rec_lis
 
 
+
 def spotify_info(artists):
     """ This takes in a pre-selected artist list and returns a sorted dictionary """
 
@@ -133,22 +134,23 @@ def spotify_info(artists):
 
     for artist in artists:
 
-        print(artist)
         artist_info = sp.search(artist, limit = 1, type = 'artist')
         artist_items = artist_info['artists']['items']
-        print(artist_items)
 
-        if len(artist_items) > 0:                     # Make a if else statement check if artist == artist_info['name'].lower()
-            spotify_dic[count] = {}                    # Keep len b/c key errors suck
-    
-            artist_tracks = sp.artist_top_tracks(artist_items[0]['id'])
+        if len(artist_items) > 0:
+            if artist == artist_items[0]['name'].lower():
 
-            spotify_dic[count]['artist_name'] = artist_tracks['tracks'][0]['artists'][0]['name']
-            spotify_dic[count]['track_name'] = artist_tracks['tracks'][0]['name']
-            spotify_dic[count]['album_name'] = artist_tracks['tracks'][0]['album']['name']
-            spotify_dic[count]['track_preview'] = artist_tracks['tracks'][0]['preview_url']
+                spotify_dic[count] = {}
+        
+                artist_tracks = sp.artist_top_tracks(artist_items[0]['id'])
+                spotify_dic[count]['artist_pic'] = artist_items[0]['images'][2]['url']
+                spotify_dic[count]['artist_name'] = artist_tracks['tracks'][0]['artists'][0]['name']
+                spotify_dic[count]['track_name'] = artist_tracks['tracks'][0]['name']
+                spotify_dic[count]['album_name'] = artist_tracks['tracks'][0]['album']['name']
+                spotify_dic[count]['track_preview'] = artist_tracks['tracks'][0]['preview_url']
+                # big_pic = artist_items[0]['images'][0]            # USE THIS WITH ARTIST INFO
 
-            count += 1
+                count += 1
 
     return spotify_dic
 
