@@ -25,15 +25,23 @@
 
     </head>
     
+    
     <body>
 
         <h1 class='maincharacterenergy'> <a href = '/'>Local Sound</a></h1>
         
         <div class = "navbar">
-            <a href = '/templates/artistinfo.html'>Thing</a>
-            <a href = '/templates/sign-in.html'>Sign-in</a>
-            <a href = '/signup'>Sign-up</a>        
-            <!-- THIS IS NOT WORKING ^^^^ -->
+            <p><a href = '/templates/artistinfo.html'>Thing</a></p>
+            <p><a href = '/templates/sign-in.html'>Sign-in</a></p>
+            <div class="dropdown">
+                <p class="dropbtn">Sign-up
+                  <i class="fa fa-caret-down"></i>
+                </p>
+                <div class="dropdown-content">
+                  <a href = '/signup/user'>Person Sign-up</a>
+                  <a href = '/signup/artist'>Artist Sign-up</a>
+                </div>
+            </div>
         </div>
 
         {% block body %}

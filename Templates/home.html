@@ -2,6 +2,8 @@
 
 {% block body %}
 
+<div id='welcome message'>Welcome {{ name }}</div>
+
 <form id="searchbar" action='/' method='post'>
         <label for="search-keyword">Search Keyword</label>
         <small class="form-text text-muted">
@@ -29,6 +31,10 @@
     {% endfor %}
 </div>
 
+<div name='bottom-bar'>
+    <a href = '/signup/user'> Make an account</a>
+    <a href = '/signup/artist'> Sign-up as an artist</a>
+</div>
 
 <!-- USE REACT TO JUST UPDATE THE HOMEPAGE WITH A PLAYLIST????? THAT MIGHT BE EASIEST DEPENDING ON HOW API WORKS -->
 <!-- Use AJAX to to populate React compnents w/ info from Flask -->

@@ -2,7 +2,7 @@
 
 from model import connect_to_db
 from flask import Flask, render_template, request, redirect
-from crud import get_artists, spotify_info
+from crud import get_artists, spotify_info, create_user, create_artist
 import os
 import requests
 
@@ -27,22 +27,17 @@ def welcome_home():
 
     return render_template("home.html")
 
+@app.route('/signup/user', methods=['GET'])
+def show_user_sign_up():
+    """ Shows the user sign-up page """
 
-@app.route('/signup', methods=['GET','POST'])
-def sign_up_start():
-    selection = request.form.get('user_type')   #Put this in Log-in tooo
-
-    if selection == 'Person':
-        return redirect("/signup.user")
-
-    if selection == 'Artist':               # Make a smaller test db or delete 
-        return redirect("/signup.artist")
-
-    return render_template("signup.html", selection=selection)
+    return render_template("signupuser.html")
 
 
-@app.route('/signup.user', methods=['GET','POST'])
+@app.route('/signup/user', methods=['GET','POST'])
 def sign_up_user():
+    """ Create a new user """
+
     username = request.form.get('username')
     password = request.form.get('password')
     city = request.form.get('city')
@@ -53,8 +48,10 @@ def sign_up_user():
     return render_template("signupuser.html", username=username, password=password, city=city, state=state)
 
 
-@app.route('/signup.artist', methods=['GET','POST'])
+@app.route('/signup/artist', methods=['GET','POST'])
 def sign_up_artist():
+    """ Create an artist through the website """
+
     username = request.form.get('username')
     password = request.form.get('password')
     profile_link = request.form.get('profile_link')
@@ -65,6 +62,19 @@ def sign_up_artist():
 
     return render_template("signupartist.html", username=username, password=password, profile_link=profile_link, city=city, state=state)
 
+
+@app.route('/login', methods=['GET'])
+def show_login():
+    """ Show the login """
+
+    return render_template("sign-in.html")
+
+
+@app.route('/login', methods=['POST'])
+def process_login():
+    """ Process the login information"""
+
+    return redirect('/')
 
 # @app.route('/artistinfo')
 # def more_on_the_band():

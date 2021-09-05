@@ -40,7 +40,7 @@ def create_user(name, password, city, state):
             db.session.commit()
             return new_user
     else:
-        return f"{name} already exits. Now redirecting to sign-up"
+        return f"{name} already exits. Now redirecting to sign-in"
 
 
 
@@ -58,10 +58,9 @@ def create_artist(artist_name, artist_password, artist_URI, city, state):
 
     if artist == None:
         if location == None:        # See create_location for why this is here #When called in server call extra
-            # new_location = Location(city = city, state = state)
-            # db.session.add(new_location)
-            # db.session.commit()
-            #return the new location?
+            new_location = Location(city = city, state = state) #
+            db.session.add(new_location)                        #
+            db.session.commit()                                 #
 
             loc_obj = Location.query.filter(Location.state == state, Location.city == None).one() #gets and sets default location
             new_artist = Artist(artist_name = artist_name, artist_password = artist_password, artist_URI = artist_URI, location_id = loc_obj.location_id)
@@ -152,7 +151,7 @@ def spotify_info(artists):
                     # big_pic = artist_items[0]['images'][0]            # USE THIS WITH ARTIST INFO
 
                     count += 1
-                    
+
                 except:
                     pass
 
