@@ -18,7 +18,12 @@
 .column_head {
     margin-right: 20px;
 } */
-  
+
+a {
+  text-decoration: none;
+  text-decoration-color: none;
+}
+
 .artist_name {
     color: blue;
     font-family: filmotype-maxwell, sans-serif;

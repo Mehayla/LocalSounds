@@ -1,7 +1,7 @@
 """ Server for LocalSound app """
 
 from model import connect_to_db
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from crud import get_artists, spotify_info
 import os
 import requests
@@ -28,32 +28,42 @@ def welcome_home():
     return render_template("home.html")
 
 
-@app.route('/sign-up', methods=['GET','POST'])
-def get_dat_user():
-    selection = request.form.get('user_type')    # This would need to be in log-in too
+@app.route('/signup', methods=['GET','POST'])
+def sign_up_start():
+    selection = request.form.get('user_type')   #Put this in Log-in tooo
 
-    if selection == 'person':
-        username = request.form.get('username')
-        password = request.form.get('password')
-        city = request.form.get('city')
-        state = request.form.get('state')
+    if selection == 'Person':
+        return redirect("/signup.user")
 
-        create_user(username, password, city, state)
+    if selection == 'Artist':               # Make a smaller test db or delete 
+        return redirect("/signup.artist")
 
-        return render_template("sign-up.html", username=username, password=password, city=city, state=state)
+    return render_template("signup.html", selection=selection)
 
-    if selection == 'artist':               # Make a smaller test db or delete 
-        username = request.form.get('username')
-        password = request.form.get('password')
-        profile_link = request.form.get('profile_link')
-        city = request.form.get('city')
-        state = request.form.get('state')
 
-        create_artist(username, password, profile_link, city, state)
+@app.route('/signup.user', methods=['GET','POST'])
+def sign_up_user():
+    username = request.form.get('username')
+    password = request.form.get('password')
+    city = request.form.get('city')
+    state = request.form.get('state')
 
-        return render_template("sign-up.html", username=username, password=password, profile_link=profile_link, city=city, state=state)
+    create_user(username, password, city, state)
 
-    return render_template("sign-up.html", user_type=user_type)
+    return render_template("signupuser.html", username=username, password=password, city=city, state=state)
+
+
+@app.route('/signup.artist', methods=['GET','POST'])
+def sign_up_artist():
+    username = request.form.get('username')
+    password = request.form.get('password')
+    profile_link = request.form.get('profile_link')
+    city = request.form.get('city')
+    state = request.form.get('state')
+
+    create_artist(username, password, profile_link, city, state)
+
+    return render_template("signupartist.html", username=username, password=password, profile_link=profile_link, city=city, state=state)
 
 
 # @app.route('/artistinfo')

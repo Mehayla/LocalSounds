@@ -20,7 +20,7 @@
 
     {% for item in playlist %}
         <div class='row'>
-            <image class='artist_pic' src="{{ playlist[item]['artist_pic'] }}" alt='Artist image' width='50' length='50'>
+            <image class='artist_pic' src="{{ playlist[item]['artist_pic'] }}" alt='Artist image'>
             <div class='artist_name'>{{ playlist[item]['artist_name'] }}</div>
             <div class='artist_toptrack'>{{ playlist[item]['track_name'] }}</div>
             <div class='artist_album'>{{ playlist[item]['album_name'] }}</div>
