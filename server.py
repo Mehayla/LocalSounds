@@ -21,7 +21,7 @@ def welcome_home():
         rec_list = get_artists(city, state) 
         playlist = spotify_info(rec_list)       #Playlist is a dictionary #TO-DO: use cases for missing information
 
-        column_headers = ['Name','Track','Album','Preview']
+        column_headers = [' ','Name','Track','Album','Preview']
 
         return render_template("home.html", playlist=playlist, column_headers=column_headers)
 

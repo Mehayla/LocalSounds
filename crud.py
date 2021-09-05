@@ -143,7 +143,7 @@ def spotify_info(artists):
                 spotify_dic[count] = {}
         
                 artist_tracks = sp.artist_top_tracks(artist_items[0]['id'])
-                spotify_dic[count]['artist_pic'] = artist_items[0]['images'][2]['url']
+                spotify_dic[count]['artist_pic'] = artist_items[0]['images'][2]['url']  #Artist image how do I turn this into an image? src in HTML
                 spotify_dic[count]['artist_name'] = artist_tracks['tracks'][0]['artists'][0]['name']
                 spotify_dic[count]['track_name'] = artist_tracks['tracks'][0]['name']
                 spotify_dic[count]['album_name'] = artist_tracks['tracks'][0]['album']['name']

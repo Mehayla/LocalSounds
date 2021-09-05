@@ -20,10 +20,11 @@
 
     {% for item in playlist %}
         <div class='row'>
-            <div class='artist_name' class='col-8'>{{ playlist[item]['artist_name'] }}</div>
-            <div class='artist_toptrack' class='col-8'>{{ playlist[item]['track_name'] }}</div>
-            <div class='artist_album' class='col-8'>{{ playlist[item]['album_name'] }}</div>
-            <div class='track_preview' class='col-8'>{{ playlist[item]['track_preview'] }}</div>
+            <image class='artist_pic' src="{{ playlist[item]['artist_pic'] }}" alt='Artist image' width='50' length='50'>
+            <div class='artist_name'>{{ playlist[item]['artist_name'] }}</div>
+            <div class='artist_toptrack'>{{ playlist[item]['track_name'] }}</div>
+            <div class='artist_album'>{{ playlist[item]['album_name'] }}</div>
+            <div class='track_preview'>{{ playlist[item]['track_preview'] }}</div>
         </div>
     {% endfor %}
 </div>
