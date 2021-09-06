@@ -21,9 +21,11 @@ def create_user(name, password, city, state):
     else:
         city = city.lower()
     state = state.lower()
-
+    
     user = User.query.filter(User.u_name == name).one_or_none() #us.one_or_none() - returns an error when nothing 
     location = Location.query.filter(Location.city == city, Location.state == state).one_or_none()
+
+    print('!!!!!!!!!', user, ' ********* ')
 
     if user == None:  
         if location == None:  #Checks if location doesn't exist
@@ -40,7 +42,7 @@ def create_user(name, password, city, state):
             db.session.commit()
             return new_user
     else:
-        return f"{name} already exits. Now redirecting to sign-in"
+        return False
 
 
 

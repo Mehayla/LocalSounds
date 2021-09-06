@@ -2,13 +2,18 @@
 
 {% block body %}
 <form class="newpeople">
-    <input type="text" placeholder="Username" class="name" name="username">
-    <input type="text" placeholder="Password" id="password" name="password">
+    <input type="text" placeholder="Username" class="username" name="username">
+    <input type="text" placeholder="Password" class="password" name="password">
     <input type="text" placeholder="City" class="city" name="city">
-    <input type="text" placeholder="US State/Country" id="userstate" name="state">
+    <input type="text" placeholder="US State/Country if not in US" class="state" name="state">
 
     <input type="submit" id="search-button"></input>
 </form>
 
-    <p>{{ username }} welcome to the neightborhood</p>
+    
+    <!-- welcome to the neightborhood -->
+{% endblock %}
+
+{% block js %}
+    <script src='/static/js/localsound.js'></script>
 {% endblock %}

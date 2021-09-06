@@ -27,40 +27,51 @@ def welcome_home():
 
     return render_template("home.html")
 
-@app.route('/signup/user', methods=['GET'])
-def show_user_sign_up():
-    """ Shows the user sign-up page """
-
-    return render_template("signupuser.html")
-
 
 @app.route('/signup/user', methods=['GET','POST'])
 def sign_up_user():
     """ Create a new user """
 
-    username = request.form.get('username')
-    password = request.form.get('password')
-    city = request.form.get('city')
-    state = request.form.get('state')
+    print(request.method)
 
-    create_user(username, password, city, state)
+    if request.method == 'POST':
+        print('This is the post-office')
+        username = request.form.get('username')
+        password = request.form.get('password')
+        city = request.form.get('city')
+        state = request.form.get('state')
 
-    return render_template("signupuser.html", username=username, password=password, city=city, state=state)
+        print(state)
+        print(username)
+
+        create_user(username, password, city, state)
+        
+        if create_user == False:
+            signup_message = f"{username} already exits. Now redirecting to sign-in" #Make this a flash?
+            return redirect('/login')
+        else:
+            signup_message = f"{username} welcome to the neighborhood!"
+            return render_template("sign-in.html", username=username, password=password, city=city, state=state, signup_message=signup_message)
+    
+    return render_template("signupuser.html")
 
 
 @app.route('/signup/artist', methods=['GET','POST'])
 def sign_up_artist():
     """ Create an artist through the website """
 
-    username = request.form.get('username')
-    password = request.form.get('password')
-    profile_link = request.form.get('profile_link')
-    city = request.form.get('city')
-    state = request.form.get('state')
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        profile_link = request.form.get('profile_link')
+        city = request.form.get('city')
+        state = request.form.get('state')
 
-    create_artist(username, password, profile_link, city, state)
+        create_artist(username, password, profile_link, city, state)
 
-    return render_template("signupartist.html", username=username, password=password, profile_link=profile_link, city=city, state=state)
+        return render_template("signupartist.html", username=username, password=password, profile_link=profile_link, city=city, state=state)
+
+    return render_template("signupartist.html")
 
 
 @app.route('/login', methods=['GET'])

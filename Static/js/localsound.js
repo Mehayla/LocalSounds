@@ -2,14 +2,18 @@
 function updateWelcome(evt) {
     evt.preventDefault();
 
+    console.log('Front-end is hard')
+
     const formData = {
-        name:$('.name').val(),
-        city:$('.city').val()
+        username:$('.username').val(),
+        city:$('.city').val(),
+        state:$('.state').val(),
+        password:$('.password').val()               
     };
 
-    $.get ('/signup', formData, (res)=>{
-        $('#welcome-message').html(res);
+    $.post ('/signup/user', formData, (res)=>{
+        $('#welcome-message').html(`${res.name}`);
     });
-});
+};
 
 $('.newpeople').on('submit', updateWelcome);
