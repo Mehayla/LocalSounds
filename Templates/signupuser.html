@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<form class="newpeople">
+    <input type="text" placeholder="Username" class="name" name="username">
+    <input type="text" placeholder="Password" id="password" name="password">
+    <input type="text" placeholder="City" class="city" name="city">
+    <input type="text" placeholder="US State/Country" id="userstate" name="state">
+
+    <input type="submit" id="search-button"></input>
+</form>
+
+    <p>{{ username }} welcome to the neightborhood</p>
+{% endblock %}
