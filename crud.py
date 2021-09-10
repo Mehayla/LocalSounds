@@ -22,22 +22,20 @@ def create_user(name, password, city, state):
         city = city.lower()
     state = state.lower()
     
-    user = User.query.filter(User.u_name == name).one_or_none() #us.one_or_none() - returns an error when nothing 
+    user = User.query.filter(User.u_name == name).one_or_none()                 #us.one_or_none() allows for exceptions when handling errors
     location = Location.query.filter(Location.city == city, Location.state == state).one_or_none()
 
-    print('!!!!!!!!!', user, ' ********* ')
-
     if user == None:  
-        if location == None:  #Checks if location doesn't exist
-            state = Location.query.filter_by(state = state, city = None).one() #If location doesn't exist yet, give them a state code ALSO ADD A FLASH? ALSO UPDATE WHEN AN ARTIST ADDS A NEW LOCATION?
+        if location == None:                                                    #Checks if location doesn't exist
+            state = Location.query.filter_by(state = state, city = None).one()  #If location doesn't exist yet, give them a state code 
 
-            new_user = User(u_name = name, u_password = password, location_id = state.location_id) # Is this still a FK???
+            new_user = User(u_name = name, u_password = password, location_id = state.location_id)
             db.session.add(new_user)
             db.session.commit()
             return new_user
         else:
             loc_obj = Location.query.filter_by(city = city, state = state).one() # gets the PK from location db 
-            new_user = User(u_name = name, u_password = password, location_id = loc_obj.location_id) # Is this still a FK???
+            new_user = User(u_name = name, u_password = password, location_id = loc_obj.location_id) 
             db.session.add(new_user)
             db.session.commit()
             return new_user
@@ -63,6 +61,7 @@ def create_artist(artist_name, artist_password, artist_URI, city, state):
             new_location = Location(city = city, state = state) #
             db.session.add(new_location)                        #
             db.session.commit()                                 #
+            # A way to email users that a new band has joined from their town
 
             loc_obj = Location.query.filter(Location.state == state, Location.city == None).one() #gets and sets default location
             new_artist = Artist(artist_name = artist_name, artist_password = artist_password, artist_URI = artist_URI, location_id = loc_obj.location_id)
@@ -100,8 +99,6 @@ def create_location(city, state):
         db.session.add(new_location)
         db.session.commit()
         return new_location
-    else:
-        pass
 
 
 

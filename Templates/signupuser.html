@@ -1,18 +1,19 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<form class="newpeople">
-    <input type="text" placeholder="Username" class="username" name="username">
-    <input type="text" placeholder="Password" class="password" name="password">
-    <input type="text" placeholder="City" class="city" name="city">
-    <input type="text" placeholder="US State/Country if not in US" class="state" name="state">
+    <form class="newpeople">
+        <input type="text" placeholder="Username" class="username" name="username">
+        <input type="text" placeholder="Password" class="password" name="password">
+        <input type="text" placeholder="City" class="city" name="city">
+        <input type="text" placeholder="US State/Country if not in US" class="state" name="state">
 
-    <input type="submit" id="search-button"></input>
-</form>
+        <input type="submit" id="search-button"></input>
+    </form>
 
-    
-    <!-- welcome to the neightborhood -->
+
+    <h1 id='welcome-message'></h1>
 {% endblock %}
+
 
 {% block js %}
     <script src='/static/js/localsound.js'></script>

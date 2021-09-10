@@ -44,9 +44,11 @@ def sign_up_user():
         print(state)
         print(username)
 
-        create_user(username, password, city, state)
+        user = create_user(username, password, city, state)
         
-        if create_user == False:
+        print(user)
+
+        if user == False:
             signup_message = f"{username} already exits. Now redirecting to sign-in" #Make this a flash?
             return redirect('/login')
         else:
@@ -78,14 +80,14 @@ def sign_up_artist():
 def show_login():
     """ Show the login """
 
-    return render_template("sign-in.html")
+    return render_template("home.html")
 
 
-@app.route('/login', methods=['POST'])
-def process_login():
-    """ Process the login information"""
+# @app.route('/login', methods=['POST'])
+# def process_login():
+#     """ Process the login information"""
 
-    return redirect('/')
+#     return redirect('/')
 
 # @app.route('/artistinfo')
 # def more_on_the_band():
