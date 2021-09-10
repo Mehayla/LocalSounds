@@ -1,8 +1,8 @@
 """ Server for LocalSound app """
 
 from model import connect_to_db
-from flask import Flask, render_template, request, redirect
-from crud import get_artists, spotify_info, create_user, create_artist
+from flask import Flask, render_template, request, redirect, jsonify
+from crud import get_artists, spotify_info, create_user, create_artist, get_user_by_username
 import os
 import requests
 
@@ -32,7 +32,6 @@ def welcome_home():
 def sign_up_user():
     """ Create a new user """
 
-    print(request.method)
 
     if request.method == 'POST':
         print('This is the post-office')
@@ -41,19 +40,17 @@ def sign_up_user():
         city = request.form.get('city')
         state = request.form.get('state')
 
-        print(state)
-        print(username)
-
-        user = create_user(username, password, city, state)
+        user = get_user_by_username(username)
         
         print(user)
 
-        if user == False:
-            signup_message = f"{username} already exits. Now redirecting to sign-in" #Make this a flash?
-            return redirect('/login')
+        if not user:
+            # return redirect('/login')
+            create_user(username, password, city, state)
+            return jsonify({'url':'/login', 'create-status': True})
         else:
-            signup_message = f"{username} welcome to the neighborhood!"
-            return render_template("sign-in.html", username=username, password=password, city=city, state=state, signup_message=signup_message)
+            return jsonify({'url':'/signup/user', 'create-status': False})
+            # return render_template("signupuser.html", username=username, password=password, city=city, state=state)
     
     return render_template("signupuser.html")
 
@@ -76,11 +73,11 @@ def sign_up_artist():
     return render_template("signupartist.html")
 
 
-@app.route('/login', methods=['GET'])
+@app.route('/login')
 def show_login():
     """ Show the login """
 
-    return render_template("home.html")
+    return render_template("login.html")
 
 
 # @app.route('/login', methods=['POST'])

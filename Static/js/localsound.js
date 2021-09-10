@@ -4,8 +4,10 @@ function updateWelcome(evt) {
 
     console.log('Front-end is hard')
 
+    let username = $('.username').val();
+
     const formData = {
-        username:$('.username').val(),
+        username:username,
         city:$('.city').val(),
         state:$('.state').val(),
         password:$('.password').val()               
@@ -13,23 +15,22 @@ function updateWelcome(evt) {
 
     $.post ('/signup/user', formData, (res)=>{
 
-        // Check which page it is with the res
-
-        // if res == '/login'
-        console.log('* * * * * * * *')
         console.log(res)
-        console.log('* * * * * * * *')
-        $('#welcome-message').text(`welcome to the neightborhood, ${res.username}`);
+        // console.log(username)
 
-    // An else statement?
-        // $.post("/signup/user", userAlert  => {
-        //     alert(f"{username} already exits. Now redirecting to sign-in");
+
+        if (res['create-status']){
+            $('#uwelcome-message').html(`welcome to the neightborhood, ${username}`)}
+
+        else {
+            alert('An account with that username already exists. Please try another one.')}
+
+        window.location = res['url'];
 
     // Have Users pick a color they really like to change some of the features??? 
     // $("blue-changer").on('click', () => {
     // $(p.changes-colors).css('font-color', blue);
     // })
-
 
     });
 };

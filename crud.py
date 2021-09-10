@@ -101,6 +101,11 @@ def create_location(city, state):
         return new_location
 
 
+def get_user_by_username(username):
+    """gets the user """
+
+    user = User.query.filter(User.u_name == username).one_or_none()
+    return user
 
 def get_artists(city, state):
     """ Gets all artists in a particular location """
