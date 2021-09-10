@@ -21,6 +21,7 @@ function updateWelcome(evt) {
 
         if (res['create-status']){
             $('#uwelcome-message').html(`welcome to the neightborhood, ${username}`)}
+            // Change this^^^^ to update on the home page?
 
         else {
             alert('An account with that username already exists. Please try another one.')}
