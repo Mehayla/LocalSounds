@@ -1,7 +1,10 @@
-body .container-fluid {
-  background: url('/static/images/Background2.png') no-repeat center center;
+body {
+  background-color:#F7F2DC;
+}
+
+.container-fluid {
+  background: url('/static/images/Background3.png') no-repeat center center;
   background-size: cover;
-  background-color:#EDE4BB;
 }
 
 a {
@@ -13,7 +16,7 @@ a {
     font-family: filmotype-maxwell, sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size:200;
+    font-size: 80px;;
 
 }
 
@@ -123,12 +126,13 @@ DBCA82 Dark Beige
 /* .track_preview {
 } */
 
-
-
-.bottom-bar {
-  margin-top: 500px;
-  background-color:#FDD6C3;
+.The-Code {
+  font-family: hwt-arabesque, sans-serif;
+  color: black;
 }
 
 
-
+.bottom-bar {
+  margin-top: 450px;
+  background-color:#FDD6C3;
+}

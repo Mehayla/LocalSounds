@@ -39,14 +39,6 @@ def populate_musicians_loc():
             state = location[0]
             create_location(city, state)
 
-    # with open("xristosk-bandcamp_artists-2021-04.csv") as artist_data:
-    #     for i, row in enumerate(artist_data, start = 1):
-            # loc_serch = re.findall(r"\d{4,7},\"(\w+?\s*\w+),?(\D+?\s*\w+)?$", row) #Coping group 1 for group 2 = None for all of them??
-            # loc_city = loc_serch.group(1)
-            # loc_state = loc_serch.group(2) #PYTHON HATES GROUPING
-            # print(loc_serch)
-
-
 
 def populate_artists():
     """ Load musican info from csv file"""
