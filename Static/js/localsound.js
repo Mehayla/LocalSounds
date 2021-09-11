@@ -2,8 +2,6 @@
 function updateWelcome(evt) {
     evt.preventDefault();
 
-    console.log('Front-end is hard')
-
     let username = $('.username').val();
 
     const formData = {
@@ -14,10 +12,6 @@ function updateWelcome(evt) {
     };
 
     $.post ('/signup/user', formData, (res)=>{
-
-        console.log(res)
-        // console.log(username)
-
 
         if (res['create-status']){
             $('#uwelcome-message').html(`welcome to the neightborhood, ${username}`)}

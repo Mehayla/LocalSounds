@@ -34,7 +34,6 @@ def sign_up_user():
 
 
     if request.method == 'POST':
-        print('This is the post-office')
         username = request.form.get('username')
         password = request.form.get('password')
         city = request.form.get('city')
@@ -42,15 +41,11 @@ def sign_up_user():
 
         user = get_user_by_username(username)
         
-        print(user)
-
         if not user:
-            # return redirect('/login')
             create_user(username, password, city, state)
             return jsonify({'url':'/login', 'create-status': True})
         else:
             return jsonify({'url':'/signup/user', 'create-status': False})
-            # return render_template("signupuser.html", username=username, password=password, city=city, state=state)
     
     return render_template("signupuser.html")
 
@@ -66,9 +61,14 @@ def sign_up_artist():
         city = request.form.get('city')
         state = request.form.get('state')
 
-        create_artist(username, password, profile_link, city, state)
-
-        return render_template("signupartist.html", username=username, password=password, profile_link=profile_link, city=city, state=state)
+        artist
+        if not artist:
+            create_artist(username, password, profile_link, city, state)
+            return jsonify({'url':'/login', 'create-status': True})
+        else:
+            edit_artist_password
+            return jsonify({'url':'/signup/user', 'create-status': False})
+            # ^^^^ FIX THIS LATER^^^^
 
     return render_template("signupartist.html")
 
