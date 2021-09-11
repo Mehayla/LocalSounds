@@ -1,49 +1,25 @@
-.maincharacterenergy {
+body .container-fluid {
+  background: url('/static/images/Background2.png') no-repeat center center;
+  background-size: cover;
+  background-color:#EDE4BB;
+}
+
+a {
+  color:black;
+}
+
+#maincharacterenergy {
     color:seagreen;
     font-family: filmotype-maxwell, sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size:180;
+    font-size:200;
 
 }
 
-/* .navbar { 
-
+ #navbar { 
+   background-color:#FDD6C3;
 }
-.navbar a {} links inside the navbar
-.navbar a:hover {} color of links when hovering
-.navbar a.active {} highlights when you're on that page */
-/* 
-
-.column_head {
-    margin-right: 20px;
-} */
-
-a {
-  text-decoration: none;
-  text-decoration-color: none;
-}
-
-.artist_name {
-    color: blue;
-    font-family: filmotype-maxwell, sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-  
-.artist_album {
-    color:blueviolet;
-    font-family: hwt-arabesque, sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-  
-.artist_toptrack {
-    color: red;
-  }
-
-/* .track_preview {
-} */
 
 .dropdown {
   overflow: hidden;
@@ -52,6 +28,7 @@ a {
 /* Add a red background color to navbar links on hover */
 .navbar a:hover, .dropdown:hover .dropbtn {
   background-color:green;
+  color:white;
 }
 
 /* Dropdown content (hidden by default) */
@@ -83,5 +60,75 @@ a {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+/* .navbar a {} links inside the navbar
+.navbar a:hover {} color of links when hovering
+.navbar a.active {} highlights when you're on that page 
+B8E2E3 light blue
+FDD6C3 light pink
+ECBAB6 mid pink
+
+F7F2DC Background
+EDE4BB Beige
+EFE2AB Beige 2
+E8D995 Beige 3
+DBCA82 Dark Beige
+*/
+
+/* 
+.column_head {
+    margin-right: 20px;
+}  */
+
+.searchbar {
+  margin-top: 50;
+  align-items: center;
+}
+
+/* input.searchbar {
+  /* align-self: center; */
+  /* align-content: center; */
+  /* text-align: center; */
+
+#search-button{
+  margin-top: 50px;
+  margin-bottom: 50px;
+  align-items: center;
+}
+
+#searchformlabel{
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.artist_name {
+    color: blue;
+    font-family: filmotype-maxwell, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+.artist_album {
+    color:blueviolet;
+    font-family: hwt-arabesque, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+.artist_toptrack {
+    color: red;
+  }
+
+/* .track_preview {
+} */
+
+
+
+.bottom-bar {
+  margin-top: 500px;
+  background-color:#FDD6C3;
+}
+
 
 

@@ -4,13 +4,16 @@
 
 <div id='welcome-message'>Welcome {{ name }}</div>
 
-<form id="searchbar" action='/' method='post'>
-        <label for="search-keyword">Search Keyword</label>
+<form class="searchbar" action='/' method='post'>
+    <div class="row" id="searchformlabel">
+        <label for="search-keyword">Search by Place</label>
         <small class="form-text text-muted">
         </small>
+    </div>
 
-    <input type="text" placeholder="City" id="city" name="city">
-    <input type="text" placeholder="US State/Country" id="state" name="state">
+    <input class="col-3 offset-3" type="text" placeholder="City" id="city" name="city">
+    <input class="col-3" type="text" placeholder="US State/Country" id="state" name="state">
+
     <input type="submit" id="search-button"></input>
 </form>
 
@@ -31,7 +34,7 @@
     {% endfor %}
 </div>
 
-<div name='bottom-bar'>
+<div class='bottom-bar'>
     <a href = '/signup/user'> Make an account</a>
     <a href = '/signup/artist'> Sign-up as an artist</a>
 </div>

@@ -92,7 +92,12 @@ def show_login():
 #     # API for artist information
 #     # Bandcamp link etc
 #     return render_template("artistinfo.html")
-pass
+
+@app.route('/about')
+def show_about():
+    """ Show the about page """
+
+    return render_template("about.html")
 
 if __name__ == "__main__":
     connect_to_db(app)
