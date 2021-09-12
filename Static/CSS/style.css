@@ -105,10 +105,13 @@ DBCA82 Dark Beige
   margin-bottom: 10px;
 }
 
+.playlist {
+  margin-top: 20px;
+}
+
 .artist_pic {
   max-height: 100px;
   max-width: 100px;
-  border-radius: 9px;
 }
 
 .artist_name {
@@ -141,4 +144,5 @@ DBCA82 Dark Beige
 .bottom-bar {
   margin-top: 20%;
   background-color:#FDD6C3;
+  align-self: center;
 }

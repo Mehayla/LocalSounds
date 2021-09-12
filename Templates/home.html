@@ -20,17 +20,17 @@
 <div id = 'playlist'> 
     <div class="row">
         {% for column_header in column_headers %}
-                <div class='column_head' class='col'>{{ column_header }}</div>
+                <div class='column_head col'>{{ column_header }}</div>
         {% endfor %}
     </div>
 
     {% for item in playlist %}
-        <div class='row'>
-            <image class='artist_pic' src="{{ playlist[item]['artist_pic'] }}" alt='Artist image'>
-            <div class='artist_name'>{{ playlist[item]['artist_name'] }}</div>
-            <div class='artist_toptrack'>{{ playlist[item]['track_name'] }}</div>
-            <div class='artist_album'>{{ playlist[item]['album_name'] }}</div>
-            <div class='track_preview'>{{ playlist[item]['track_preview'] }}</div>
+        <div class='playlist row'>
+            <image class='artist_pic col' src="{{ playlist[item]['artist_pic'] }}" alt='Artist image'>
+            <div class='artist_name col'>{{ playlist[item]['artist_name'] }}</div>
+            <div class='artist_toptrack col'>{{ playlist[item]['track_name'] }}</div>
+            <div class='artist_album col'>{{ playlist[item]['album_name'] }}</div>
+            <div class='track_preview col'>{{ playlist[item]['track_preview'] }}</div>
         </div>
     {% endfor %}
 </div>
