@@ -58,6 +58,7 @@ def create_artist(artist_name, artist_password, city, state, artist_URI, link_1,
 
     artist = Artist.query.filter(Artist.artist_name == artist_name).one_or_none()
     location = Location.query.filter(Location.city == city, Location.state == state).one_or_none()
+    # ^^^^ Multiple rows were found when one or none was required ^^^^
 
     if artist == None:
         if location == None:        # See create_location for why this is here #When called in server call extra

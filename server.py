@@ -79,6 +79,7 @@ def sign_up_artist():
             return jsonify({'url':'/', 'create-status': False})
             # ^^^^ FIX THIS LATER^^^^
             # ^^^^This needs to update the password^^^
+            # Use Seed status to update the password versus redirect to login
 
     return render_template("signupartist.html")
 
