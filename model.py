@@ -15,7 +15,9 @@ class User(db.Model):
                         autoincrement = True)
     u_name = db.Column(db.String(30), unique = True)
     u_password = db.Column(db.String(30))
+    email = db.Column(db.String)
     location_id = db.Column(db.Integer, db.ForeignKey('locations.location_id'))
+    site_theme = db.Column(db.String, nullable = True)
 
     def __repr__(self):
         return f"{self.u_name} is in {self.location_id} \n"
@@ -30,10 +32,13 @@ class Artist(db.Model):
     artist_id = db.Column(db.Integer, 
                         primary_key = True,
                         autoincrement = True)
-    artist_name = db.Column(db.String, unique = True)
+    artist_name = db.Column(db.String, unique = True, nullable = False)
     artist_password = db.Column(db.String)
-    artist_URI = db.Column(db.String, unique = True)
+    seed = db.Column(False)
     location_id = db.Column(db.Integer, db.ForeignKey('locations.location_id'))
+    artist_URI = db.Column(db.String, unique = True, nullable=True)
+    artist_link_1 = db.Column(db.String, unique = True, nullable = True)
+    artist_link_2 = db.Column(db.String, unique = True, nullable=True)
 
     def __repr__(self):
         return f"{self.artist_name} is rockin in {self.location_id}\n"

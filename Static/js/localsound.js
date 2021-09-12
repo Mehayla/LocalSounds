@@ -33,6 +33,40 @@ function updateWelcome(evt) {
 $('.newpeople').on('submit', updateWelcome);
 
 
+
+
+function newArtist(evt) {
+    evt.preventDefault();
+
+    let aname = $('.aname').val();
+
+    const formData = {
+        aname:aname,
+        password:$('.password').val(),
+        city:$('.city').val(),
+        state:$('.state').val(),
+        bc_link:$('.bc_link').val(),
+        link_1:$('.link_1').val(),
+        link_2:$('.link_2').val()               
+    };
+
+    $.post ('/signup/artist', formData, (res)=>{
+
+        if (res['create-status']){
+            $('#uwelcome-message').html(`welcome to the neightborhood, ${aname}`)}
+            // Change this^^^^ to update on the home page?
+
+        else {
+            alert('Your information has been updated')}
+
+        window.location = res['url'];
+    });
+};
+
+
+$('.newartist').on('submit', newArtist);
+
+
 // If sign-in == True
     // $('#login-button').remove('sign-up');
 

@@ -44,9 +44,10 @@ def create_user(name, password, city, state):
 
 
 
-def create_artist(artist_name, artist_password, artist_URI, city, state):
+def create_artist(artist_name, artist_password, city, state, artist_URI, artist_link_1, artist_link_2):
     """ Adds a new artist to the artist table"""
 
+    artist_name = artist_name.lower()
     state = state.lower()
     if city == '' or city == None:
         city = None
@@ -64,18 +65,18 @@ def create_artist(artist_name, artist_password, artist_URI, city, state):
             # A way to email users that a new band has joined from their town
 
             loc_obj = Location.query.filter(Location.state == state, Location.city == None).one() #gets and sets default location
-            new_artist = Artist(artist_name = artist_name, artist_password = artist_password, artist_URI = artist_URI, location_id = loc_obj.location_id)
+            new_artist = Artist(artist_name = artist_name, artist_password = artist_password, location_id = loc_obj.location_id, artist_URI = artist_URI, artist_link_1=artist_link_1, artist_link_2=artist_link_2)
             db.session.add(new_artist)
             db.session.commit()
             return new_artist
         else:
             loc_obj = Location.query.filter_by(city = city, state = state).one() # gets the PK from location db 
-            new_artist = Artist(artist_name = artist_name, artist_password = artist_password, artist_URI = artist_URI, location_id = loc_obj.location_id)
+            new_artist = Artist(artist_name = artist_name, artist_password = artist_password, location_id = loc_obj.location_id, artist_URI = artist_URI, artist_link_1=artist_link_1, artist_link_2=artist_link_2)
             db.session.add(new_artist)
             db.session.commit()
             return new_artist
     else:
-        return f"You're already in our database silly. Redirecting to sign-up"
+        return False
        
 
 
@@ -106,6 +107,12 @@ def get_user_by_username(username):
 
     user = User.query.filter(User.u_name == username).one_or_none()
     return user
+
+def get_artist_by_name(name):
+    artist = Artist.query.filter(Artist.artist_name == name).one_or_none()
+    return artist
+
+    
 
 def get_artists(city, state):
     """ Gets all artists in a particular location """
@@ -165,3 +172,7 @@ def spotify_info(artists):
 if __name__ == "__main__":
     from server import app
     connect_to_db(app)
+
+    # db.drop_all()
+    # db.create_all()
+

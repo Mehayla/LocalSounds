@@ -2,7 +2,7 @@
 
 from model import connect_to_db
 from flask import Flask, render_template, request, redirect, jsonify
-from crud import get_artists, spotify_info, create_user, create_artist, get_user_by_username
+from crud import get_artists, spotify_info, create_user, create_artist, get_user_by_username, get_artist_by_name
 import os
 import requests
 
@@ -55,20 +55,25 @@ def sign_up_artist():
     """ Create an artist through the website """
 
     if request.method == 'POST':
-        username = request.form.get('username')
+        aname = request.form.get('aname')
         password = request.form.get('password')
-        profile_link = request.form.get('profile_link')
         city = request.form.get('city')
         state = request.form.get('state')
+        bc_link = request.form.get('bc_link')
+        link_1 = request.form.get('link_1')
+        link_2 = request.form.get('link_2')
 
-        artist
+
+        artist = get_artist_by_name(aname)
+
         if not artist:
-            create_artist(username, password, profile_link, city, state)
+            create_artist(aname, password, city, state, bc_link, link_1, link_2)
             return jsonify({'url':'/login', 'create-status': True})
         else:
-            edit_artist_password
+            # edit_artist_password 
             return jsonify({'url':'/signup/user', 'create-status': False})
             # ^^^^ FIX THIS LATER^^^^
+            # ^^^^This needs to update the password^^^
 
     return render_template("signupartist.html")
 
