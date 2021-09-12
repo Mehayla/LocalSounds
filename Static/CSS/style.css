@@ -5,33 +5,41 @@ body {
 .container-fluid {
   background: url('/static/images/darkBackground.png') no-repeat center center;
   background-size: cover;
+  margin: 0;
 }
 
 a {
-  color:black;
-}
+  color:white;}
 
 #maincharacterenergy {
     color:white;
     font-family: filmotype-maxwell, sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 80px;;
-
+    font-size: 80px;
+    margin-left: 2%;
 }
 
- #navbar { 
+ .navbar { 
+   border-radius: 10px;
    background-color:#4F8989;
+   color:white;
+   margin-left: 2%;
+   margin-right: 2%;
 }
 
 .dropdown {
   overflow: hidden;
 }
 
-/* Add a red background color to navbar links on hover */
-.navbar a:hover, .dropdown:hover .dropbtn {
-  background-color:green;
-  color:white;
+.navbar:hover, .dropdown:hover .dropbtn {
+  background-color:white;
+  color:#4F8989;
+}
+
+.navbar a:hover {
+  background-color:white;
+  color:#4F8989;
 }
 
 /* Dropdown content (hidden by default) */
@@ -47,7 +55,7 @@ a {
 /* Links inside the dropdown */
 .dropdown-content a {
   float: none;
-  color: black;
+  color: white;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -81,14 +89,16 @@ DBCA82 Dark Beige
 303030 dark background
 */
 
-/* 
-.column_head {
-    margin-right: 20px;
-}  */
+
+ .column_head {
+  margin-right: 20px;
+  color:white;
+} 
 
 .searchbar {
   margin-top: 50;
   align-items: center;
+  color:white;
 }
 
 /* input.searchbar {
@@ -110,6 +120,7 @@ DBCA82 Dark Beige
 
 .playlist {
   margin-top: 20px;
+  color:white;
 }
 
 .artist_pic {
@@ -118,34 +129,33 @@ DBCA82 Dark Beige
 }
 
 .artist_name {
-    color: blue;
+    color:white;
     font-family: filmotype-maxwell, sans-serif;
     font-weight: 400;
     font-style: normal;
   }
   
 .artist_album {
-    color:blueviolet;
+    color:white;
     font-family: hwt-arabesque, sans-serif;
     font-weight: 400;
     font-style: normal;
   }
   
 .artist_toptrack {
-    color: red;
-  }
+  color:white;  }
 
 /* .track_preview {
 } */
 
 .The-Code {
   font-family: hwt-arabesque, sans-serif;
-  color: black;
-}
+  color:white;}
 
 
 .bottom-bar {
-  margin-top: 20%;
-  background-color:#FDD6C3;
+  border-radius: 10px;
+  margin-top: 5%;
+  background-color:#4F8989;
   align-self: center;
 }
