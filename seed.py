@@ -1,7 +1,7 @@
 """ Seeding my localsound db with data """
 
 from model import db, User, Artist, Location, connect_to_db
-from crud import create_user, create_artist, create_location
+from crud import seed_artist, seed_location
 import pandas as pd
 import os
 import re
@@ -19,7 +19,9 @@ def set_state_codes():
     with open("State_country codes.csv") as state_country_data:
         for i, row in enumerate(state_country_data):
                 state = row.lower().strip('\n')
-                create_location(None, state)
+                seed_location(None, state)
+                db.session.commit()
+        return 'All Done'
 
 
 
@@ -28,16 +30,23 @@ def populate_musicians_loc():
 
     artist_data = pd.read_csv("xristosk-bandcamp_artists-2021-04.csv")
 
-    for i, row in artist_data.iterrows(): #What is I just pull everything from the csv?
+    for i, row in artist_data.iterrows():
         location = row['location'].split(',')
         try:
             city = location[0]
             state = location[1].strip()         #strip the sapce in front & end of state string
-            create_location(city, state)
+            seed_location(city, state)
+            if i % 1000 == 0:
+                db.session.commit()
         except:
             city = None
             state = location[0]
-            create_location(city, state)
+            seed_location(city, state)
+            if i % 1000 == 0:                   #This significantly cuts down the seed time
+                db.session.commit()
+    db.session.commit()
+    return 'All Done'
+
 
 
 def populate_artists():
@@ -49,17 +58,25 @@ def populate_artists():
         name = row['artist_name']
         url = row['bc_url']
         location = row['location'].split(',')
-        password = 'potato'                     # I know there's a better way to do this lol
+        password = 'potato'                   
         try:
             city = location[0].strip()
-            state = location[1].strip()         #strip the sapce in front & end of state string
-            create_artist(name, password, url, city, state)
+            state = location[1].strip()
+            print(city)
+            print(state)
+            seed_artist(name, password, city, state, url)
+            if i % 100 == 0:
+                db.session.commit()
         except:
             city = None
             state = location[0].strip()
-            create_artist(name, password, url, city, state)
-
-              #Maybe add another table for genere? or just the Spotify API for dat
+            print(city)
+            print(state)
+            seed_artist(name, password, city, state, url)
+            if i % 100 == 0:
+                db.session.commit()
+    db.session.commit()
+    return 'All Done'
 
 
 
@@ -67,6 +84,4 @@ def populate_artists():
 if __name__ == '__main__':
     from server import app
     connect_to_db(app)
-    db.create_all()
-
-    # get_musicians()
+    # db.create_all()

@@ -11,7 +11,60 @@ SPOTIPY_CLIENT_ID = os.environ['SPOTIPY_CLIENT_ID']
 auth_manager = SpotifyClientCredentials()
 sp = spotipy.Spotify(auth_manager=auth_manager)
 
-# Need to make a password reset for artist - esp default artists
+
+
+def seed_artist(artist_name, artist_password, city, state, artist_URI):
+    """ The original artist seed data"""
+
+    seed_status = True
+    artist_name = artist_name.lower()
+    state = state.lower()
+    if city == '' or city == None:
+        city = None
+    else:
+        city = city.lower()
+
+    artist = Artist.query.filter(Artist.artist_name == artist_name).one_or_none()
+    location = Location.query.filter(Location.city == city, Location.state == state).one_or_none()
+
+    if artist == None:
+        if location == None:        # See create_location for why this is here #When called in server call extra
+
+            loc_obj = Location.query.filter_by(city = None, state = state).one()
+            new_artist = Artist(artist_name = artist_name, artist_password = artist_password, seed_status = seed_status, location_id = loc_obj.location_id, artist_URI = artist_URI)
+            db.session.add(new_artist)
+            return new_artist
+        else:
+            loc_obj = Location.query.filter_by(city = city, state = state).one()
+            new_artist = Artist(artist_name = artist_name, artist_password = artist_password, seed_status = seed_status, location_id = loc_obj.location_id, artist_URI = artist_URI)
+            db.session.add(new_artist)
+            return new_artist
+    else:
+        return False
+
+
+
+def seed_location(city, state):
+    """ Adds a new location to the DB"""
+
+    # This should be able to take in a location 2 ways.
+    # 1. When the csv is loaded into the application via seed 
+    # 2. When a user or artist inputs a location that is not currently in the db 3.0
+
+    state = state.lower()
+    if city == '' or city == None:
+        city = None
+    else:
+        city = city.lower()
+
+    location = Location.query.filter(Location.city == city, Location.state == state).one_or_none()
+
+    if location == None:
+        new_location = Location(state = state, city = city)
+        db.session.add(new_location)
+        return new_location
+
+
 
 def create_user(name, password, city, state):
     """ Adds a new user to the user table"""
@@ -44,9 +97,10 @@ def create_user(name, password, city, state):
 
 
 
-def create_artist(artist_name, artist_password, city, state, artist_URI, link_1, link_2):
-    """ Adds a new artist to the artist table"""
+def create_artist(artist_name, artist_password, city, state, artist_URI, link_1 = None, link_2 = None):
+    """ Adds a new artist from the form and adds it to the artist table"""
 
+    seed_status = False
     artist_name = artist_name.lower()
     state = state.lower()
     if city == '' or city == None:
@@ -54,7 +108,6 @@ def create_artist(artist_name, artist_password, city, state, artist_URI, link_1,
     else:
         city = city.lower()
 
-    seed_status = False
 
     artist = Artist.query.filter(Artist.artist_name == artist_name).one_or_none()
     location = Location.query.filter(Location.city == city, Location.state == state).one_or_none()
@@ -65,7 +118,6 @@ def create_artist(artist_name, artist_password, city, state, artist_URI, link_1,
             new_location = Location(city = city, state = state) #
             db.session.add(new_location)                        #
             db.session.commit()                                 #
-            # A way to email users that a new band has joined from their town
 
             loc_obj = Location.query.filter_by(city = city, state = state).one()
             new_artist = Artist(artist_name = artist_name, artist_password = artist_password, seed_status = seed_status, location_id = loc_obj.location_id, artist_URI = artist_URI, link_1 = link_1, link_2 = link_2)
@@ -73,7 +125,7 @@ def create_artist(artist_name, artist_password, city, state, artist_URI, link_1,
             db.session.commit()
             return new_artist
         else:
-            loc_obj = Location.query.filter_by(city = city, state = state).one() # gets the PK from location db 
+            loc_obj = Location.query.filter_by(city = city, state = state).one()
             new_artist = Artist(artist_name = artist_name, artist_password = artist_password, seed_status = seed_status, location_id = loc_obj.location_id, artist_URI = artist_URI, link_1 = link_1, link_2 = link_2)
             db.session.add(new_artist)
             db.session.commit()
@@ -103,6 +155,7 @@ def create_location(city, state):
         db.session.add(new_location)
         db.session.commit()
         return new_location
+
 
 
 def get_user_by_username(username):
