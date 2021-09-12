@@ -187,7 +187,7 @@ def get_artists(city, state):
     for artist in artists:
         rec_list.append(artist.artist_name)
 
-    rec_lis = random.sample(rec_list, k=2) #Picks 50 random artists
+    rec_lis = random.sample(rec_list, k=10) #Picks 50 random artists
     return rec_lis
 
 
@@ -198,12 +198,17 @@ def spotify_info(artists):
     spotify_dic = {}
     count = 0
 
+    print(artists)
     for artist in artists:
+        print(artist,': ', count)
 
         artist_info = sp.search(artist, limit = 1, type = 'artist')
         artist_items = artist_info['artists']['items']
 
         if len(artist_items) > 0:
+            # print(artist_items[0]['name'].lower())
+            # print(artist_items)
+            # print('^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^')
             if artist == artist_items[0]['name'].lower():
                 try:
 
