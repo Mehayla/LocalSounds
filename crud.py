@@ -206,9 +206,6 @@ def spotify_info(artists):
         artist_items = artist_info['artists']['items']
 
         if len(artist_items) > 0:
-            # print(artist_items[0]['name'].lower())
-            # print(artist_items)
-            # print('^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^')
             if artist == artist_items[0]['name'].lower():
                 try:
 

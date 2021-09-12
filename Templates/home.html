@@ -18,10 +18,11 @@
 </form>
 
 <div id = 'playlist'> 
- 
-    {% for column_header in column_headers %}
-            <div class='column_head' class='col-4'>{{ column_header }}</div>
-    {% endfor %}
+    <div class="row">
+        {% for column_header in column_headers %}
+                <div class='column_head' class='col'>{{ column_header }}</div>
+        {% endfor %}
+    </div>
 
     {% for item in playlist %}
         <div class='row'>

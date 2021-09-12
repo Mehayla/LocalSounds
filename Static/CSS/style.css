@@ -105,6 +105,12 @@ DBCA82 Dark Beige
   margin-bottom: 10px;
 }
 
+.artist_pic {
+  max-height: 100px;
+  max-width: 100px;
+  border-radius: 9px;
+}
+
 .artist_name {
     color: blue;
     font-family: filmotype-maxwell, sans-serif;
@@ -133,6 +139,6 @@ DBCA82 Dark Beige
 
 
 .bottom-bar {
-  margin-top: 450px;
+  margin-top: 20%;
   background-color:#FDD6C3;
 }
