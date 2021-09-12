@@ -44,7 +44,7 @@ def create_user(name, password, city, state):
 
 
 
-def create_artist(artist_name, artist_password, city, state, artist_URI, artist_link_1, artist_link_2):
+def create_artist(artist_name, artist_password, city, state, artist_URI, link_1, link_2):
     """ Adds a new artist to the artist table"""
 
     artist_name = artist_name.lower()
@@ -53,6 +53,8 @@ def create_artist(artist_name, artist_password, city, state, artist_URI, artist_
         city = None
     else:
         city = city.lower()
+
+    seed_status = False
 
     artist = Artist.query.filter(Artist.artist_name == artist_name).one_or_none()
     location = Location.query.filter(Location.city == city, Location.state == state).one_or_none()
@@ -64,14 +66,14 @@ def create_artist(artist_name, artist_password, city, state, artist_URI, artist_
             db.session.commit()                                 #
             # A way to email users that a new band has joined from their town
 
-            loc_obj = Location.query.filter(Location.state == state, Location.city == None).one() #gets and sets default location
-            new_artist = Artist(artist_name = artist_name, artist_password = artist_password, location_id = loc_obj.location_id, artist_URI = artist_URI, artist_link_1=artist_link_1, artist_link_2=artist_link_2)
+            loc_obj = Location.query.filter_by(city = city, state = state).one()
+            new_artist = Artist(artist_name = artist_name, artist_password = artist_password, seed_status = seed_status, location_id = loc_obj.location_id, artist_URI = artist_URI, link_1 = link_1, link_2 = link_2)
             db.session.add(new_artist)
             db.session.commit()
             return new_artist
         else:
             loc_obj = Location.query.filter_by(city = city, state = state).one() # gets the PK from location db 
-            new_artist = Artist(artist_name = artist_name, artist_password = artist_password, location_id = loc_obj.location_id, artist_URI = artist_URI, artist_link_1=artist_link_1, artist_link_2=artist_link_2)
+            new_artist = Artist(artist_name = artist_name, artist_password = artist_password, seed_status = seed_status, location_id = loc_obj.location_id, artist_URI = artist_URI, link_1 = link_1, link_2 = link_2)
             db.session.add(new_artist)
             db.session.commit()
             return new_artist
@@ -175,4 +177,3 @@ if __name__ == "__main__":
 
     # db.drop_all()
     # db.create_all()
-

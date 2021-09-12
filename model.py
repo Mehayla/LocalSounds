@@ -34,11 +34,11 @@ class Artist(db.Model):
                         autoincrement = True)
     artist_name = db.Column(db.String, unique = True, nullable = False)
     artist_password = db.Column(db.String)
-    seed = db.Column(False)
+    seed_status = db.Column(db.String, nullable=False)
     location_id = db.Column(db.Integer, db.ForeignKey('locations.location_id'))
     artist_URI = db.Column(db.String, unique = True, nullable=True)
-    artist_link_1 = db.Column(db.String, unique = True, nullable = True)
-    artist_link_2 = db.Column(db.String, unique = True, nullable=True)
+    link_1 = db.Column(db.String, unique = True, nullable = True)
+    link_2 = db.Column(db.String, unique = True, nullable=True)
 
     def __repr__(self):
         return f"{self.artist_name} is rockin in {self.location_id}\n"

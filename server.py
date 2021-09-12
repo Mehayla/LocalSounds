@@ -68,10 +68,15 @@ def sign_up_artist():
 
         if not artist:
             create_artist(aname, password, city, state, bc_link, link_1, link_2)
+            print('* * * * * * * * * * *')
+            print(artist.seed_status)
+            print('* * * * * * * * * * *')
             return jsonify({'url':'/login', 'create-status': True})
         else:
-            # edit_artist_password 
-            return jsonify({'url':'/signup/user', 'create-status': False})
+            print('* * * * * * * * * * *')
+            print(artist.seed_status)
+            print('* * * * * * * * * * *')
+            return jsonify({'url':'/', 'create-status': False})
             # ^^^^ FIX THIS LATER^^^^
             # ^^^^This needs to update the password^^^
 
