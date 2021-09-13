@@ -1,3 +1,13 @@
+/* Experimental colors
+F7F2DC Background
+EDE4BB Beige
+EFE2AB Beige 2
+E8D995 Beige 3
+DBCA82 Dark Beige
+
+4F8989 Teal
+303030 dark background */
+
 body {
   background-color:#303030;
 }
@@ -11,7 +21,7 @@ body {
 
 a {
   text-decoration: none;
-  color:white;}
+}
 
 #maincharacterenergy {
     color:white;
@@ -26,26 +36,37 @@ a {
   align-content: center;
 }
 
+/* DO .ACTIVE FOR ALL THE NAVBAR LINKS */
+
  .navbar { 
    border-radius: 10px;
    background-color:#4F8989;
-   color:white;
    margin-left: 2%;
    margin-right: 2%;
    height: 50px;
+   margin-top: 28px;
+   padding:center;
 }
 
 .navabar a{
   text-align: center;
+  color:white;
 }
 
 .dropdown {
+  visibility: collapse;
   overflow: hidden;
+  width:100%;
 }
 
-.navbar:hover, .dropdown:hover .dropbtn {
+.navbar:hover, .dropbtn {
   color:#4F8989;
   background-color:white;
+}
+
+.navbar:hover .dropdown {
+  visibility:visible;
+  width:100%;
 }
 
 /* .navbar a:hover {
@@ -54,34 +75,34 @@ a {
 } */
 
 /* Dropdown content (hidden by default) */
-.dropdown-content {
+/* .dropdown-content {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
-}
+} */
 
 /* Links inside the dropdown */
-.dropdown-content a {
+/* .dropdown-content a {
   float: none;
   color: #4F8989;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
   text-align: left;
-}
+} */
 
 /* Add a grey background color to dropdown links on hover */
-.dropdown-content a:hover {
+/* .dropdown-content a:hover {
   background-color: #ddd;
-}
+} */
 
 /* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
+/* .dropdown:hover {
+  display: none;
+} */
 
 /* .navbar a {} links inside the navbar
 .navbar a:hover {} color of links when hovering
@@ -89,15 +110,6 @@ a {
 B8E2E3 light blue
 FDD6C3 light pink
 ECBAB6 mid pink
-
-F7F2DC Background
-EDE4BB Beige
-EFE2AB Beige 2
-E8D995 Beige 3
-DBCA82 Dark Beige
-
-4F8989 Teal
-303030 dark background
 */
 
 
@@ -167,5 +179,5 @@ DBCA82 Dark Beige
 .bottom-bar {
   border-radius: 10px;
   background-color:#4F8989;
-  margin-top: 400px;
+  margin-top: 375px;
 }
