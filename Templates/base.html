@@ -27,30 +27,35 @@
     
     
     <body>
-  
-      <h1> <a id='maincharacterenergy' href = '/'>Local Sound</a></h1>
-
       <div class="container-fluid">
 
-        <div class = "row">
-          <div class="navbar col">
+        <div class = "row align-middle">
+
+          <h1 class='col'> <a id='maincharacterenergy' href = '/'>Local Sound</a></h1>
+
+          <div class="navbar col-2">
             <a href = '/about'>About</a>
           </div>
+        
+          <div class="navbar col-2">
+            <div class="dropdown">
+              <p class="dropbtn">Sign-up</p>
+              <div class="dropdown-content">
+                <a class = "navbar" href = '/signup/user'>Person Sign-up</a>
+                <a class = "navbar" href = '/signup/artist'>Artist Sign-up</a>
+              </div>
+            </div>
+          </div>
 
-          <div class="navbar col">
+          <div class="navbar col-2">
             <a href = '/sign-in.html'>Sign-in</a>
           </div>
         </div>
 
-        <div class="dropdown">
-          <p class="dropbtn">Sign-up</p>
-          <div class="dropdown-content">
-            <a class = "navbar" href = '/signup/user'>Person Sign-up</a>
-            <a class = "navbar" href = '/signup/artist'>Artist Sign-up</a>
-          </div>
-        </div>
-
-        <!-- <nav class="navbar navbar-expand-lg">
+        <!-- 
+          
+          
+          <nav class="navbar navbar-expand-lg">
           <a class="navbar-brand" href="/">Yes</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -81,11 +86,10 @@
         {% endblock %}
 
 
-
-      </div>
         <div class='bottom-bar row'>
           <a class='col' href = '/signup/user'> Make an account</a>
           <a class='col' href = '/signup/artist'> Sign-up as an artist</a>
         </div>
+      </div>
     </body>
 </html>
