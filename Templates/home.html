@@ -15,8 +15,8 @@
     <input type="submit" id="search-button"></input>
 </form>
 
-<table id = 'playlist'> 
-    <tr class="jjjjj">
+<table> 
+    <tr class="column_row">
         {% for column_header in column_headers %}
                 <th class='column_head col'>{{ column_header }}</th>
         {% endfor %}
@@ -28,10 +28,10 @@
             <td class='artist_name col'>{{ playlist[item]['artist_name'] }}</td>
             <td class='artist_toptrack col'>{{ playlist[item]['track_name'] }}</td>
             <td class='artist_album col'>{{ playlist[item]['album_name'] }}</td>
-            <td class='track_preview col'>{{ playlist[item]['track_preview'] }}</td>
+            <td class='track_preview col'><a href="{{ playlist[item]['track_preview'] }}">Track preview</a></td>
         </tr>
     {% endfor %}
-    </table>
+</table>
 
 <!-- <div id = 'playlist'> 
     <div class="row">

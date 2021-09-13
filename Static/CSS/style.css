@@ -112,13 +112,6 @@ a {
 .navbar a:hover {} color of links when hovering
 .navbar a.active {} highlights when you're on that page  */
 
-
-
- .column_head {
-  margin-right: 20px;
-  color:white;
-} 
-
 .searchbar {
   margin-top: 50;
   margin-bottom: 20px;
@@ -143,14 +136,38 @@ a {
   margin-bottom: 2%;
 }
 
+
+
+table {
+  align-self: center;
+}
+
 .playlist {
   margin-top: 20px;
   color:white;
+  align-content: center;
+  margin-top: 5px;
+  background-color: #4F8989;
+}
+
+.playlist:hover {
+  opacity: 1;
+}
+
+.column_row{
+  opacity: 1;
+}
+
+ .column_head {
+  margin-right: 20px;
+  color:white;
+  background-color: #4F8989;
 }
 
 .artist_pic {
   height: 100px;
   width: 100px;
+  opacity: 1;
 }
 
 .artist_name {
@@ -158,6 +175,7 @@ a {
     font-family: filmotype-maxwell, sans-serif;
     font-weight: 400;
     font-style: normal;
+    opacity: 1;
   }
   
 .artist_album {
@@ -165,13 +183,19 @@ a {
     font-family: hwt-arabesque, sans-serif;
     font-weight: 400;
     font-style: normal;
+    opacity: 1;
   }
   
 .artist_toptrack {
-  color:white;  }
+  color:white;
+  opacity: 1;
+ }
 
-/* .track_preview {
-} */
+.track_preview {
+  text-decoration: none;
+  color:white;
+}
+
 
 .The-Code {
   font-family: hwt-arabesque, sans-serif;
