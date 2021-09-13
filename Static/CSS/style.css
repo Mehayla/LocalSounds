@@ -110,11 +110,8 @@ a {
 
 /* .navbar a {} links inside the navbar
 .navbar a:hover {} color of links when hovering
-.navbar a.active {} highlights when you're on that page 
-B8E2E3 light blue
-FDD6C3 light pink
-ECBAB6 mid pink
-*/
+.navbar a.active {} highlights when you're on that page  */
+
 
 
  .column_head {
@@ -124,6 +121,7 @@ ECBAB6 mid pink
 
 .searchbar {
   margin-top: 50;
+  margin-bottom: 20px;
   align-items: center;
   color:white;
 }
@@ -151,8 +149,8 @@ ECBAB6 mid pink
 }
 
 .artist_pic {
-  max-height: 100px;
-  max-width: 100px;
+  height: 100px;
+  width: 100px;
 }
 
 .artist_name {

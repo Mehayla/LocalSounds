@@ -15,7 +15,25 @@
     <input type="submit" id="search-button"></input>
 </form>
 
-<div id = 'playlist'> 
+<table id = 'playlist'> 
+    <tr class="jjjjj">
+        {% for column_header in column_headers %}
+                <th class='column_head col'>{{ column_header }}</th>
+        {% endfor %}
+    </tr>
+
+    {% for item in playlist %}
+        <tr class='playlist'>
+            <td><image class='artist_pic col' src="{{ playlist[item]['artist_pic'] }}" alt='Artist image'></td>
+            <td class='artist_name col'>{{ playlist[item]['artist_name'] }}</td>
+            <td class='artist_toptrack col'>{{ playlist[item]['track_name'] }}</td>
+            <td class='artist_album col'>{{ playlist[item]['album_name'] }}</td>
+            <td class='track_preview col'>{{ playlist[item]['track_preview'] }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+
+<!-- <div id = 'playlist'> 
     <div class="row">
         {% for column_header in column_headers %}
                 <div class='column_head col'>{{ column_header }}</div>
@@ -31,7 +49,7 @@
             <div class='track_preview col'>{{ playlist[item]['track_preview'] }}</div>
         </div>
     {% endfor %}
-</div>
+</div> -->
 
 
 <!-- USE REACT TO JUST UPDATE THE HOMEPAGE WITH A PLAYLIST????? THAT MIGHT BE EASIEST DEPENDING ON HOW API WORKS -->
