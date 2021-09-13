@@ -39,8 +39,9 @@ a {
 /* DO .ACTIVE FOR ALL THE NAVBAR LINKS */
 
  .navbar { 
-   border-radius: 10px;
    background-color:#4F8989;
+   color: white;
+   border-radius: 10px;
    margin-left: 2%;
    margin-right: 2%;
    height: 50px;
@@ -48,10 +49,9 @@ a {
    padding:center;
 }
 
-.navabar a{
-  text-align: center;
-  color:white;
-}
+/* .navabar a{
+    color: white;
+} */
 
 .dropdown {
   visibility: collapse;
@@ -59,7 +59,7 @@ a {
   width:100%;
 }
 
-.navbar:hover, .dropbtn {
+.navbar:hover {
   color:#4F8989;
   background-color:white;
 }
@@ -68,6 +68,10 @@ a {
   visibility:visible;
   width:100%;
 }
+
+/* Notice no , ^ because this is refering to the children of .navbar ->.dropdown */
+
+
 
 /* .navbar a:hover {
   color:#4F8989;
@@ -180,4 +184,8 @@ ECBAB6 mid pink
   border-radius: 10px;
   background-color:#4F8989;
   margin-top: 375px;
+}
+
+.bottom-bar a {
+  color: white;
 }
