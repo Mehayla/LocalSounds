@@ -46,7 +46,7 @@ a {
    margin-right: 2%;
    height: 50px;
    margin-top: 28px;
-   padding:center;
+   text-align: center;
 }
 
 .navbar a:active, .dropdown a:active {
@@ -181,6 +181,8 @@ table {
 .newpeople input{
   margin-right: 20px;
 }
+
+
 
 .The-Code {
   font-family: hwt-arabesque, sans-serif;
