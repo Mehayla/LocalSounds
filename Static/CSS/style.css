@@ -49,9 +49,10 @@ a {
    padding:center;
 }
 
-/* .navabar a{
-    color: white;
-} */
+.navbar a:active, .dropdown a:active {
+  color:#4F8989;
+  background-color:white;
+}
 
 .dropdown {
   visibility: collapse;
@@ -71,42 +72,6 @@ a {
 
 /* Notice no , ^ because this is refering to the children of .navbar ->.dropdown */
 
-
-
-/* .navbar a:hover {
-  color:#4F8989;
-  text-emphasis-color: #4F8989;
-} */
-
-/* Dropdown content (hidden by default) */
-/* .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-} */
-
-/* Links inside the dropdown */
-/* .dropdown-content a {
-  float: none;
-  color: #4F8989;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-} */
-
-/* Add a grey background color to dropdown links on hover */
-/* .dropdown-content a:hover {
-  background-color: #ddd;
-} */
-
-/* Show the dropdown menu on hover */
-/* .dropdown:hover {
-  display: none;
-} */
 
 /* .navbar a {} links inside the navbar
 .navbar a:hover {} color of links when hovering
@@ -140,22 +105,20 @@ a {
 
 table {
   align-self: center;
+  border-radius: 10px;
+
 }
 
 .playlist {
   margin-top: 20px;
   color:white;
   align-content: center;
-  margin-top: 5px;
-  background-color: #4F8989;
+  margin-top: 10px;
+  background-color: rgba(79, 137, 137, .25);
 }
 
 .playlist:hover {
-  opacity: 1;
-}
-
-.column_row{
-  opacity: 1;
+  background-color: rgba(79, 137, 137, 1);
 }
 
  .column_head {
@@ -167,39 +130,36 @@ table {
 .artist_pic {
   height: 100px;
   width: 100px;
-  opacity: 1;
+  margin-right: 2%;
+
 }
 
 .artist_name {
     color:white;
-    font-family: filmotype-maxwell, sans-serif;
+    /* font-family: filmotype-maxwell, sans-serif; */
     font-weight: 400;
     font-style: normal;
-    opacity: 1;
+    margin-right: 1%;
   }
   
 .artist_album {
     color:white;
-    font-family: hwt-arabesque, sans-serif;
+    /* font-family: hwt-arabesque, sans-serif; */
     font-weight: 400;
     font-style: normal;
-    opacity: 1;
+    margin-right: 1%;
   }
   
 .artist_toptrack {
   color:white;
-  opacity: 1;
+  margin-right: 1%;
  }
 
-.track_preview {
+.track_preview a{
   text-decoration: none;
   color:white;
 }
 
-
-.The-Code {
-  font-family: hwt-arabesque, sans-serif;
-  color:white;}
 
 
 .bottom-bar {
@@ -211,3 +171,17 @@ table {
 .bottom-bar a {
   color: white;
 }
+
+
+
+.newpeople{
+  margin-top: 150px;
+}
+
+.newpeople input{
+  margin-right: 20px;
+}
+
+.The-Code {
+  font-family: hwt-arabesque, sans-serif;
+  color:white;}

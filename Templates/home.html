@@ -15,23 +15,25 @@
     <input type="submit" id="search-button"></input>
 </form>
 
-<table> 
-    <tr class="column_row">
-        {% for column_header in column_headers %}
-                <th class='column_head col'>{{ column_header }}</th>
-        {% endfor %}
-    </tr>
-
-    {% for item in playlist %}
-        <tr class='playlist'>
-            <td><image class='artist_pic col' src="{{ playlist[item]['artist_pic'] }}" alt='Artist image'></td>
-            <td class='artist_name col'>{{ playlist[item]['artist_name'] }}</td>
-            <td class='artist_toptrack col'>{{ playlist[item]['track_name'] }}</td>
-            <td class='artist_album col'>{{ playlist[item]['album_name'] }}</td>
-            <td class='track_preview col'><a href="{{ playlist[item]['track_preview'] }}">Track preview</a></td>
+<div class='col-8 mx-auto'>
+    <table> 
+        <tr class="column_row">
+            {% for column_header in column_headers %}
+                    <th class='column_head col'>{{ column_header }}</th>
+            {% endfor %}
         </tr>
-    {% endfor %}
-</table>
+
+        {% for item in playlist %}
+            <tr class='playlist'>
+                <td><image class='artist_pic col' src="{{ playlist[item]['artist_pic'] }}" alt='Artist image'></td>
+                <td class='artist_name col'>{{ playlist[item]['artist_name'] }}</td>
+                <td class='artist_toptrack col'>{{ playlist[item]['track_name'] }}</td>
+                <td class='artist_album col'>{{ playlist[item]['album_name'] }}</td>
+                <td class='track_preview col'><a href="{{ playlist[item]['track_preview'] }}">Track preview</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
 
 <!-- <div id = 'playlist'> 
     <div class="row">
