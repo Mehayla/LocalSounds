@@ -49,6 +49,8 @@ a {
    text-align: center;
 }
 
+/* ^^^^ WORKING ON CENTERING THIS TEXT NEXT ^^^^ */
+
 .navbar a:active, .dropdown a:active {
   color:#4F8989;
   background-color:white;
