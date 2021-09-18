@@ -46,7 +46,6 @@ a {
    margin-right: 2%;
    height: 50px;
    margin-top: 28px;
-   text-align: center;
 }
 
 /* ^^^^ WORKING ON CENTERING THIS TEXT NEXT ^^^^ */
@@ -60,6 +59,10 @@ a {
   visibility: collapse;
   overflow: hidden;
   width:100%;
+}
+
+.dropbtn{
+  padding-top: 5px;
 }
 
 .navbar:hover {
