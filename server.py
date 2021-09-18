@@ -10,7 +10,7 @@ import requests
 app = Flask(__name__)
 
 
-@app.route('/', methods=['GET','POST']) #The GET is for when / is first loaded b/c not getting a post
+@app.route('/', methods=['GET','POST'])         #The GET is for when / is first loaded b/c not getting a post
 def welcome_home():
     """ Landing page """
 
@@ -19,7 +19,7 @@ def welcome_home():
         state = request.form.get('state')
 
         rec_list = get_artists(city, state) 
-        playlist = spotify_info(rec_list)       #Playlist is a dictionary #TO-DO: use cases for missing information
+        playlist = spotify_info(rec_list)       #Playlist is a dictionary 
 
         column_headers = [' ','Name','Track','Album','Preview']
 
