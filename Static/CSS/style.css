@@ -109,9 +109,7 @@ a {
 
 
 table {
-  align-self: center;
-  border-radius: 10px;
-
+  width:100%;
 }
 
 .playlist {
@@ -185,6 +183,11 @@ table {
 
 .newpeople input{
   margin-right: 20px;
+}
+
+
+.newartist{
+  align-content: center;
 }
 
 
