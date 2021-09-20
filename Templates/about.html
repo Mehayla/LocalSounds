@@ -2,26 +2,24 @@
 
 {% block body %}
 
-    <h2 class="aboutheader justify-content-center">Hello, my name is Mehayla.</h2>
+    <div class='about row'>
+        <div class='col-4'>
+            <h2 class="aboutgreeting">Hello, my name is Mehayla.</h2>
 
-    <image class='profilepic' src="/static/images/GradPhoto.jpg" width="400" height="300"></image>
+            <image class='profilepic' src="/static/images/GradPhoto.jpg" width="400" height="300"></image>
 
-    <p class='intro justify-content-center'> Thanks for looking at my project! I coded and designed 
-        it with the support of the amazing Hackbright staff. It is perfectly imperfect and a work in 
-        progress, just like myselff.</p>
+            <p class='intro'> Thanks for looking at my project! I coded and designed 
+                it with the support of the amazing Hackbright staff. It is perfectly imperfect and a work in 
+                progress, just like myself.</p>
+        </div>
 
-    <p class='justify-content-center'> This project was built on a SQL data base that organizes and connects
-        Users, Artists, and Locations together. SQL allowed for easy quering so that filters artists based on specific 
-        locations and then pulls information from the spotify API. 
-        
-        My orginal seed data was based on a data set created by Xristos Katsaros. He is data scientist from NY 
-        that was doing a maping project with artists. Artist location data was the missing piece and his dataset 
-        was the perfect jumping off point for my project.</p>
+        <div class='col-5 offset-1'>
+            <h3 class="aboutheader">You can see the project code here</h3>
+                <a class='The-Code' href = 'https://github.com/Mehayla/LocalSounds'>Da Code</a>
 
-    <h3 class="aboutheader justify-content-center">You can see the project code here</h3>
-        <h4><a class='The-Code' href = 'https://github.com/Mehayla/LocalSounds'>Da Code</a></h4>
-
-    <h3 class="aboutheader justify-content-center">Check on the projects current status here</h3>
-        <h4><a class='The-Code' href = 'https://github.com/users/Mehayla/projects/1'>Da Status</a></h4>
+            <h3 class="aboutheader2">Check on the projects current status here</h3>
+                <a class='The-Code' href = 'https://github.com/users/Mehayla/projects/1'>Da Status</a>
+        </div>
+    </div>
 
 {% endblock %}

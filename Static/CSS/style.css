@@ -16,7 +16,8 @@ body {
   background: url('/static/images/darkBackground.png') no-repeat center center;
   background-size: cover;
   margin: 0;
-  padding-top: 20px;
+  padding-top: 1%;
+  padding-bottom: 25%;
 }
 
 a {
@@ -155,18 +156,6 @@ table {
 
 
 
-.bottom-bar {
-  border-radius: 10px;
-  background-color:#4F8989;
-  margin-top: 375px;
-}
-
-.bottom-bar a {
-  color: white;
-}
-
-
-
 .newpeople{
   margin-top: 150px;
 }
@@ -175,10 +164,13 @@ table {
   margin-right: 20px;
 }
 
+.newartist{
+  margin-top: 5%;
+}
 
 .newartist input{
   margin-right:20px;
-  margin-top: 150px;
+  margin-top: 50px;
 }
 
 .login {
@@ -191,27 +183,40 @@ table {
 }
 
 
+.aboutgreeting {
+  color:white;
+  margin-left: 2%;
+}
+
 .aboutheader {
   color:white;
   justify-content: center;
   margin-top: 2%;
 }
 
+.aboutheader2 {
+  color:white;
+  justify-content: center;
+  margin-top: 10%;
+}
+
 .profilepic{
   border-radius: 10px;
   margin-right: 2%;
   margin-left: 2%;
-  float: right;
 }
 
 .intro {
   margin-bottom: 3%;
+  margin-left:2%;
 }
 
 .The-Code {
   font-family: hwt-arabesque, sans-serif;
   font-size: 60px;
-  color:white;}
+  color:white;
+  width:30%;
+}
 
   .The-Code:hover {
     color:#4F8989;}
@@ -219,4 +224,22 @@ table {
 p {
   color:white;
   justify-content: center;
+  margin-top: 2%;
+}
+
+.about {
+  margin-top: 2%;
+}
+
+
+.bottom-bar {
+  border-radius: 10px;
+  background-color:#4F8989;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.bottom-bar a {
+  color: white;
 }
