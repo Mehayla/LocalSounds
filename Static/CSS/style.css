@@ -36,8 +36,6 @@ a {
   align-content: center;
 }
 
-/* DO .ACTIVE FOR ALL THE NAVBAR LINKS */
-
  .navbar { 
    background-color:#4F8989;
    color: white;
@@ -47,8 +45,6 @@ a {
    height: 50px;
    margin-top: 28px;
 }
-
-/* ^^^^ WORKING ON CENTERING THIS TEXT NEXT ^^^^ */
 
 .navbar a:active, .dropdown a:active {
   color:#4F8989;
@@ -65,7 +61,11 @@ a {
   padding-top: 5px;
 }
 
-.navbar:hover {
+.navbar:hover .dropbtn{
+  color:#4F8989;
+}
+
+.navbar:hover{
   color:#4F8989;
   background-color:white;
 }
@@ -76,11 +76,6 @@ a {
 }
 
 /* Notice no , ^ because this is refering to the children of .navbar ->.dropdown */
-
-
-/* .navbar a {} links inside the navbar
-.navbar a:hover {} color of links when hovering
-.navbar a.active {} highlights when you're on that page  */
 
 .searchbar {
   margin-top: 50;
@@ -201,16 +196,32 @@ table {
 }
 
 
-.The-Code {
-  font-family: hwt-arabesque, sans-serif;
-  color:white;}
-
-p {
+.aboutheader {
   color:white;
   justify-content: center;
+  margin-top: 2%;
 }
 
-.aboutheader {
+.profilepic{
+  border-radius: 10px;
+  margin-right: 2%;
+  margin-left: 2%;
+  float: right;
+}
+
+.intro {
+  margin-bottom: 3%;
+}
+
+.The-Code {
+  font-family: hwt-arabesque, sans-serif;
+  font-size: 60px;
+  color:white;}
+
+  .The-Code:hover {
+    color:#4F8989;}
+
+p {
   color:white;
   justify-content: center;
 }
