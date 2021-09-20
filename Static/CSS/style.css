@@ -188,10 +188,29 @@ table {
 
 .newartist input{
   margin-right:20px;
+  margin-top: 150px;
 }
 
+.login {
+  margin-top: 150px;
+}
+
+#loginsub {
+  margin-top: 20px;
+  align-items: center;
+}
 
 
 .The-Code {
   font-family: hwt-arabesque, sans-serif;
   color:white;}
+
+p {
+  color:white;
+  justify-content: center;
+}
+
+.aboutheader {
+  color:white;
+  justify-content: center;
+}
