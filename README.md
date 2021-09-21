@@ -13,7 +13,7 @@ This project was built on a SQL data base that organizes and connects Users, Art
 My orginal seed data was based on a data set created by [Xristos Katsaros](https://github.com/xxristoskk). He is data scientist from NY that was doing a maping project with artists. Artist location data was the missing piece and his dataset was the perfect jumping off point for my project.
 
 ## Demo
-### [Click Here to watch the demo](https://www.google.com)
+### [Click Here to watch the demo](https://youtu.be/j_IYON-dWn0)
 ![The Playlist](/Static/images/Playlistscreenshot.JPG "A picture of the playlist")
 
 ## About the engineer
