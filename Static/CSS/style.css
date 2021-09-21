@@ -58,10 +58,6 @@ a {
   width:100%;
 }
 
-.dropbtn{
-  padding-top: 5px;
-}
-
 .navbar:hover .dropbtn{
   color:#4F8989;
 }
@@ -104,10 +100,8 @@ table {
 }
 
 .playlist {
-  margin-top: 20px;
   color:white;
   align-content: center;
-  margin-top: 10px;
   background-color: rgba(79, 137, 137, .25);
 }
 
@@ -125,7 +119,6 @@ table {
   height: 100px;
   width: 100px;
   margin-right: 2%;
-
 }
 
 .artist_name {
@@ -134,6 +127,7 @@ table {
     font-weight: 400;
     font-style: normal;
     margin-right: 1%;
+    margin-left: 1%;
   }
   
 .artist_album {
@@ -152,6 +146,7 @@ table {
 .track_preview a{
   text-decoration: none;
   color:white;
+  margin-right: 1%;
 }
 
 
