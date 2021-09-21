@@ -21,4 +21,4 @@ Mehayla is a graduate from the University of California, Berkeley from the class
 
 You can find out more about me and connect professional on [Linkedin](https://www.linkedin.com/in/mehaylacheadle/)
 
-![More contact information email me at mehayla@gmail.com or conect on linkedin](/Static/images/Videointro.png "A picture of me and my contact info")
+![More contact information email me at mehayla@gmail.com or conect on linkedin](/Static/images/VideoIntro.png "A picture of me and my contact info")
