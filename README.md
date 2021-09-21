@@ -7,10 +7,11 @@ You can see the [Current Status](https://github.com/users/Mehayla/projects/1) of
 
 ## The Stack
 This project was built on a SQL data base that organizes and connects Users, Artists, and Locations together. SQL allowed for easy quering so that filters artists based on specific locations and then pulls information from the spotify API. 
-        
-My orginal seed data was based on a data set created by Xristos Katsaros. He is data scientist from NY 
-that was doing a maping project with artists. Artist location data was the missing piece and his dataset 
-was the perfect jumping off point for my project.
+
+![Tech Stack](/Static/images/Stackpic.png "A picture of my stack")
+
+My orginal seed data was based on a data set created by [Xristos Katsaros](https://github.com/xxristoskk). He is data scientist from NY that was doing a maping project with artists. Artist location data was the missing piece and his dataset was the perfect jumping off point for my project.
+
 ## Demo
 ~ VIDEO LINK HERE ~
 ![The Playlist](/Static/images/Playlistscreenshot.JPG "A picture of the playlist")
