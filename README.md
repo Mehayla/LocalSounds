@@ -1,9 +1,9 @@
-# LocalSound ![The Homepage](/static/images/LSHomePage.JPG "A picture of the playlist")
+# LocalSound ![The Homepage](/Static/images/LSHomePage.JPG "A picture of the playlist")
 Music is everywhere and Local Sound is a full stack web application that helps music lovers find it. The main feature of the site allows users to generate a playlist of local artists top songs . It is designed to discover and stimulate local music scenes, recommending smaller less known artist rather than popular artists. With rural and international music lovers in mind, the site guarantees a playlist for everyone. The best part is that you get a new playlist every single time! All it take is a simple refresh. In addition, to this Local Sound allows for both Users and up and coming Artists to sign up and join their local music scenes. Listen to the Sounds local to you, or anywhere in the world.
 
 
 You can see the [Current Status](https://github.com/users/Mehayla/projects/1) of the project here.
-![The Playlist](/static/images/Playlistscreenshot.JPG "A picture of the playlist")
+![The Playlist](/Static/images/Playlistscreenshot.JPG "A picture of the playlist")
 
 ## The Stack
 This project was built on a SQL data base that organizes and connects Users, Artists, and Locations together. SQL allowed for easy quering so that filters artists based on specific locations and then pulls information from the spotify API. 
