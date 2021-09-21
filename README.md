@@ -20,3 +20,5 @@ My orginal seed data was based on a data set created by [Xristos Katsaros](https
 Mehayla is a graduate from the University of California, Berkeley from the class of 2020. It was there that she earned a B.S. in Society and the Environment. She formally worked in the education field as an outdoor instructor, a guidance counselor, and as a math tutor. Her passion for tech stemmed from a early love of math, logic, and problem solving. Mehayla wants to make a positive difference in the world. In her free time she volunteers as a brand marketing manager for nonprofits. Prior to Hackbright she took courses for HTML/CSS, Data Science, and Python. After Hackbright she will continue to improve her technical knowledge in coding languages and data science. She aspires to become a Software Engineer where she can make an impact.
 
 You can find out more about me and connect professional on [Linkedin](https://www.linkedin.com/in/mehaylacheadle/)
+
+![More contact information email me at mehayla@gmail.com or conect on linkedin](/Static/images/Videointro.png "A picture of me and my contact info")
