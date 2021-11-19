@@ -6,7 +6,7 @@ Music is everywhere and Local Sound is a full stack web application that helps m
 You can see the [Current Status](https://github.com/users/Mehayla/projects/1) of the project here.
 
 ## The Stack
-This project was built on a SQL data base that organizes and connects Users, Artists, and Locations together. SQL allowed for easy quering so that filters artists based on specific locations and then pulls information from the spotify API. 
+This project was built on a SQL data base that organizes and connects Users, Artists, and Locations connected through relational tables. SQL allowed for easy quering so that filters artists based on specific locations and then pulls information from the spotify API, using Spotipy (A python wrapper for this API).
 
 ![Tech Stack includes Python, Javascript, SQL, SQLAlchemy, HTML5, CSS, Pandas, jQuery, Jinja, Flask, Bootstrap, Ajax, Spotipy](/Static/images/Stackpic.png "A picture of my stack")
 
