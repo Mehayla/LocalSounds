@@ -53,7 +53,7 @@ def seed_location(city, state):
     # 1. When the csv is loaded into the application via seed. 
     # 2. When a user or artist inputs a location that is not currently in the db 3.0
 
-    state = state.lower()
+    state = state.lower() 
     if city == '' or city == None:
         city = None
     else:
